@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# Generates packaging/msi/files.wxs from a published (self-contained) app folder.
+# Layout: files at the root belong to INSTALLFOLDER; files in first-level
+# sub-directories become DIR_<name> components under it.
+set -euo pipefail
+
+SRC="${1:?usage: gen-wix-files <publish-dir> <out.wxs>}"
+OUT="${2:?usage: gen-wix-files <publish-dir> <out.wxs>}"
+
+emit_component() {
+    local dir="$1"   # "" for root, else relative subdir
+    local did="$2"
+    local scan
+    if [ -z "$dir" ]; then scan="$SRC"; else scan="$SRC/$dir"; fi
+
+    local idx=0 first=""
+    local files=()
+    while IFS= read -r -d '' f; do
+        files+=("$f")
+    done < <(find "$scan" -maxdepth 1 -type f ! -name '*.pdb' -print0 2>/dev/null || true)
+
+    if [ ${#files[@]} -eq 0 ]; then
+        return
+    fi
+
+    echo "      <Component Id=\"cmp_${did}\" Directory=\"${did}\" Guid=\"*\">"
+    for f in "${files[@]}"; do
+        local base key
+        base="$(basename "$f")"
+        if [ "$idx" -eq 0 ]; then key=" KeyPath=\"yes\""; else key=""; fi
+        printf '        <File Source="%s"%s />\n' "$f" "$key"
+        idx=$((idx + 1))
+    done
+    echo "      </Component>"
+}
+
+{
+    echo '<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">'
+    echo '  <Fragment>'
+    echo '    <ComponentGroup Id="ProductComponents">'
+
+emit_component "" "INSTALLFOLDER"
+
+    dirs=()
+    while IFS= read -r -d '' d; do
+        dirs+=("$(basename "$d")")
+    done < <(find "$SRC" -mindepth 1 -maxdepth 1 -type d -print0 2>/dev/null || true)
+
+    for d in "${dirs[@]+"${dirs[@]}"}"; do
+        safe="${d//[^A-Za-z0-9_]/_}"
+        emit_component "$d" "DIR_$safe"
+    done
+
+    echo '    </ComponentGroup>'
+    echo '    <DirectoryRef Id="INSTALLFOLDER">'
+    for d in "${dirs[@]+"${dirs[@]}"}"; do
+        safe2="${d//[^A-Za-z0-9_]/_}"
+        echo "      <Directory Id=\"DIR_$safe2\" Name=\"$d\" />"
+    done
+    echo '    </DirectoryRef>'
+    echo '  </Fragment>'
+    echo '</Wix>'
+} > "$OUT"
+
+echo "generated $OUT"

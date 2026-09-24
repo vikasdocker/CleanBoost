@@ -1,0 +1,9 @@
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+dist/*.zip
+dist/*.msix
+*AppPackages*
