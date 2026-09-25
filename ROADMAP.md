@@ -100,8 +100,20 @@ CleanBoost/
 
 ## 4. How to build & test (commands that are known to work)
 
-From a **Windows terminal** (does NOT work purely from WSL without the
-workarounds below; see §7):
+**One shot — restore, test, publish, icons, MSIX, sign, zip, MSI:**
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/build-release.ps1          # build all three
+powershell -ExecutionPolicy Bypass -File scripts/build-release.ps1 -SkipTests
+powershell -ExecutionPolicy Bypass -File scripts/build-release.ps1 -Upload  # + push to gh release
+```
+
+Version comes from `<Version>` in `src/CleanBoost.App/CleanBoost.App.csproj`;
+the script *asserts* the published exe, the AppxManifest `Identity/@Version`
+and the WiX `Package/@Version` all agree with it, so they cannot silently
+drift again.
+
+Individual steps, from a **Windows** terminal:
 
 ```bash
 # Release publish (self-contained, x64) → publish/win-x64
@@ -112,7 +124,19 @@ dotnet publish src/CleanBoost.App/CleanBoost.App.csproj -c Release \
 dotnet test tests/CleanBoost.Tests/CleanBoost.Tests.csproj
 # On Windows-only TFM tests (elevation helper):
 dotnet test tests/CleanBoost.Tests -c Release -p:RunWindowsTests=true
+
+# WiX MSI only (native Windows; see §7 env trap #2)
+powershell -File tools/gen-wix-files.ps1 -Src publish/win-x64 -Out packaging/msi/files.wxs
+wix build packaging/msi/product.wxs packaging/msi/files.wxs -arch x64 -out dist/CleanBoost-x64-0.2.0.msi
+
+# Re-pack + re-sign MSIX only
+powershell -File scripts/rebuild-reupload.ps1
 ```
+
+Prereqs: `dotnet` 8.0.425 (see `global.json`), Windows 10 SDK (for
+`makeappx.exe`/`signtool.exe`, auto-discovered under
+`C:\Program Files (x86)\Windows Kits\10\bin\<version>\x64\`), `wix`
+(`dotnet tool install --global wix`), `gh` authed.
 
 Absolute paths used in CI:
 
@@ -129,7 +153,7 @@ WindowsAppSDK (see §7 env trap #1).
 
 ---
 
-## 5. Done (verified 29 passing + 2 windows-only)
+## 5. Done (verified 30 passing; +2 windows-only opt-in)
 
 Core engine (CleanBoost.Core) — no OS dependencies, unit-tested:
 - BuiltInCatalog with 8 Safe +  capitalised categories; Files / FilesElevated /
@@ -142,7 +166,7 @@ Core engine (CleanBoost.Core) — no OS dependencies, unit-tested:
   audit log; parallel delete via `Parallel.ForEachAsync`
 - `WinappParser` — parses winapp2.ini into CleanCategory list (FileKey only,
   skips registry-only), plus `LocateRulesFile()` + `ParseFile()`
-- 29 Core unit tests (ScanEngine, PathGuard, PathGuardTests, WinappParser,
+- 30 net8.0 unit tests (ScanEngine, PathGuard, PathResolver, WinappParser,
   SafeDeleter) green
 
 System layer (CleanBoost.System) — compiles clean (net8.0-windows TFM):
@@ -156,35 +180,37 @@ System layer (CleanBoost.System) — compiles clean (net8.0-windows TFM):
   with ServiceTuner toggles, admin banner + restart-as-admin, history page
   backed by audit log. Builds clean (0 warnings).
 
-Tests: 29/29 net8.0 + 2 elevation (opt-in `-p:RunWindowsTests=true`,
+Tests: 30/30 net8.0 + 2 elevation (opt-in `-p:RunWindowsTests=true`,
 31/31 on Windows).
 
-Packaging (partial, see §6):
-- `dist/CleanBoost-x64-0.1.0-portable.zip` (85.6MB, self-contained)
-- `dist/CleanBoost-x64-0.1.0.msix` (85.3MB) — **signed** with a dev cert,
-  `makeappx` + `signtool`. Not yet Store-ready; sideload only.
+Packaging — all three deliverables exist for 0.2.0 (see §6 for what is left):
+- `dist/CleanBoost-x64-0.2.0-portable.zip` (81.7MB, self-contained)
+- `dist/CleanBoost-x64-0.2.0.msix` (83.3MB) — signed `CN=JS BlueFlutex` with
+  `packaging/JSBlueFlutexDev.pfx` (self-signed, **sideload only**). Inside the
+  package: `Identity/@Version=0.2.0.0`, exe 0.2.0.0, 516 files.
+- `dist/CleanBoost-x64-0.2.0.msi` (67.6MB) — WiX 7, 505 files, admin-install
+  smoke-checked (extracts to 506 files incl. `rules\winapp2.ini`).
+- `scripts/build-release.ps1` produces all three from source in one run.
 - `tools/generate-icons.ps1` produces the app assets (Square44x44Logo,
   Square150x150Logo, Square310x310Logo, StoreLogo, Wide310x150Logo)
-- `packaging/msix/` layout = publish/win-x64 + AppxManifest
-- `packaging/msi/` WiX project `.wxs` source is ready but the **WiX build
-  itself is BLOCKED by a WiX-on-WSL issue** (see §7 env trap #2). The WiX MSI
-  has NOT been produced yet.
+- `packaging/msix/` layout = publish/win-x64 + AppxManifest + Assets
+- `packaging/msi/` WiX `product.wxs` + generated `files.wxs`
+- Uploaded to GitHub release `v0.2.0` (repo `vikasdocker/CleanBoost`, public).
 
 ---
 
 ## 6. What remains (roadmap for the next agent)
 
-### P0 — Finish standalone installer (blocked by §7#2)
-- Deliver `CleanBoost-x64-0.1.0.msi` from `packaging/msi`.
-- Approaches to take (choose by tooling available):
-  1. Build WiX on **native Windows** (e.g. `dotnet tool install --tool-path C:\wix wix`)
-     — avoids the WSL remote-path bug entirely.
-  2. Or switch to another installer (Inno Setup / NSIS / Advanced Installer) — spec
-     unchanged.
-- Then add an install smoke check.
+### P0 — Standalone installer — DONE
+- `dist/CleanBoost-x64-0.2.0.msi` builds from `packaging/msi` with native WiX 7
+  (`wix` on PATH). The WSL path bug (§7#2) is bypassed by
+  `tools/gen-wix-files.ps1`, which emits `C:\...` paths.
+- Still outstanding: a real **install → launch → uninstall** run as admin
+  (only a non-elevated *administrative* extract has been automated so far),
+  and signing the MSI (currently unsigned, unlike the MSIX).
 
 ### P1 — Store packaging (MSIX real Store submission)
-- `dist` currently uses a dev self-signed cert. For Store:
+- `dist` uses a dev self-signed cert. For Store:
   - Generate proper Store asset sizes (see generate-icons.ps1; use the 10-panel set),
   - Switch MSIX signing to the Store att honey (Partner Center) or a real EV cert
   - Add `PublisherId`, proper `PhoneProductId`, `PublisherDisplayName`.
@@ -192,20 +218,25 @@ Packaging (partial, see §6):
 - Verify the full MSIX passes App Submission checks (the dev-cert MSIX only
   sideloads; Store needs the 10.0-panel icon set + proper version).
 
-### P2 — CI + reproducible builds
-- Add a `build.ps1`/`pack.cmd` that: restore → test (Core suite) → publish →
-  gen icons → pack MSIX → sign → build WiX MSI → zip. Commands must match §4.
+### P2 — CI + reproducible builds — DONE locally, CI still open
+- `scripts/build-release.ps1` does restore → test → publish → gen icons →
+  pack MSIX → sign → gen WiX files → build MSI → zip, with `-Upload`.
 - Optional: GitHub Actions `windows-latest` job (self-hosted not required).
-- Tag `v0.1.0`.
+- The commit for a release should be tagged `v<Version>` from the csproj;
+  `build-release.ps1 -Upload` creates the tag if missing.
 
 ### P3 — Polish
 - Add `Asset Files` + `App icon` to the .csproj so the MSIX `AppxManifest`
   references the right logo names (currently uses `Assets\StoreLogo.png`).
-- Version bump to 0.1.0, `Version`/`AssemblyFileVersion` synced to a single
-  `Directory.Build.props` var.
-- Add LICENSE (the `rules/winapp2.ini` is CC-BY-SA — include attribution).
-- Wire the WiX `files.wxs` to be generated by `tools/gen-wix-files` from the
-  publish folder (already exists; unblocked once WiX build works).
+- `Directory.Build.props` still carries `Authors`/`Product`/`RepositoryUrl`
+  defaults (`RepositoryUrl` is a placeholder `example/cleanboost`); the App
+  csproj overrides Version/Company/Authors itself. Worth collapsing to one
+  source of truth.
+- Add LICENSE attribution for `rules/winapp2.ini` (CC-BY-SA) — MIT LICENSE
+  exists but does not mention it.
+- Signing keys: `.gitignore` now blocks `*.pfx`, but `packaging/CleanBoostDev.pfx`
+  is **already in history** at commit `f2ed5c5`. It is password-protected; treat
+  it as burned.
 
 ### P4 — Verification checklist (manual, on a real Windows machine)
 1. Launch → admin banner shows → "Restart as administrator" → UAC → banner
@@ -233,15 +264,14 @@ Packaging (partial, see §6):
    Update `CleanBoost.App.csproj` `PackageReference Microsoft.WindowsAppSDK`
    to match whatever is on disk in the `microsoft.windowsappsdk.winui`
 
-2. **WiX build on WSL fails to resolve `/mnt/c/...` paths.** The WiX toolset
-   running under WSL cannot `File.IsExists` files at `/mnt/c/...` (they exist,
-   but paths are handled by the .NET host under a different mount). Symptoms:
-   `error WIX0103: Cannot find the File ... The following paths were checked:
-   /mnt/c/...` — even though the file exists. **Workaround: build WiX on
-   native Windows** (hosted dotnet resolves `C:\...` correctly). Do not spend
-   time debugging WSL WiX path handling. (Current: `packaging/msi/*.wxs`
-   uses `/mnt/c/...` absolute paths — regenerate from `tools/gen-wix-files`
-   into `C:\...` form when building natively.)
+2. **WiX build on WSL fails to resolve `/mnt/c/...` paths — SOLVED, do not
+   re-derive.** WiX running under WSL cannot `File.IsExists` files at
+   `/mnt/c/...`. Symptoms: `error WIX0103: Cannot find the File ... The
+   following paths were checked: /mnt/c/...` even though the file exists.
+   **Resolution: run WiX on native Windows** (`wix` 7.0.0 on PATH) and
+   generate `files.wxs` with `tools/gen-wix-files.ps1`, which writes `C:\...`
+   paths. The bash `tools/gen-wix-files` writes `/mnt/c/...` and must NOT be
+   used for a native build. Do not spend time debugging WSL WiX path handling.
 
 3. **WSL dev loop**: use `/mnt/c/...` for file edits + `dotnet test` from WSL
    (Core tests are pure, run fine); use Windows `dotnet` (`/mnt/c/.../dotnet.exe`)
@@ -261,17 +291,52 @@ Packaging (partial, see §6):
    harvest and for `WinappParser.LocateRulesFile()` which looks next to the
    executable).
 
+7. **`makeappx.exe`/`signtool.exe` live under a versioned dir, not `bin\x64`.**
+   Picking "the newest directory in `Windows Kits\10\bin`" by string sort
+   yields `x86` and then `bin\x86\x64\signtool.exe` — which does not exist.
+   Filter to `^\d+\.\d+\.` and sort as `[version]`. See the `Find-KitTool`
+   function in `scripts/build-release.ps1`.
+
+8. **WiX WIX0368: `Guid="*" is not valid`** when one `<Component>` holds
+   several files and a *non*-keypath file is versioned. Emit **one component
+   per file** — that is what `tools/gen-wix-files.ps1` does (505 components).
+
+9. **PowerShell `-replace` is case-insensitive.** Replacing `Version="..."`
+   also hits the XML declaration's `version="1.0"` and `InstallerVersion="500"`,
+   which makes WiX report `WIX0104: Syntax for an XML declaration is invalid`
+   or `WIX0008: InstallerVersion is not a legal integer`. Anchor the pattern:
+   `(<Package\b[^>]*?\bVersion=")[^"]*"`.
+
+10. **`signtool verify /pa` always "fails" for the dev MSIX** — self-signed
+    root, so you get "certificate chain ... terminated in a root which is not
+    trusted". That is expected, not a build failure. Verify with
+    `Get-AuthenticodeSignature` and assert the signer subject
+    `CN=JS BlueFlutex` instead. Also note `$ErrorActionPreference = "Stop"`
+    turns signtool's *stderr* into a terminating error — suspend it around
+    the verify call.
+
+11. **Git does not untrack a file just because you added it to `.gitignore`.**
+    `packaging/CleanBoostDev.pfx` stayed in HEAD after `*.pfx` was ignored;
+    it needs an explicit `git rm --cached`. Same for `publish/` and
+    `packaging/msix/layout/`, which held ~850 tracked build-output files.
+
 ---
 
 ## 8. Success criteria / quality gate for "done"
 
-- [ ] `dotnet test` on WSL: 29/29 green.
-- [ ] `dotnet test -p:RunWindowsTests=true` on Windows: 31/31 green.
-- [ ] `dotnet build CleanBoost.App -c Release -r win-x64` → 0 errors/0 warnings.
-- [ ] `dist/CleanBoost-x64-0.1.0.msi` installs to `Program Files\CleanBoost`,
-      launches, uninstalls cleanly (P4 checklist).
-- [ ] `dist/CleanBoost-x64-0.1.0.msix` signed + sideload-installable
-      (Store listing can follow).
-- [ ] All 3 deliverables (portable zip, MSIX, MSI) in `dist/` with the same
-      code revision tagged.
-```
+Current state (0.2.0) — all verified:
+
+- [x] `dotnet test`: **30/30** green.
+- [ ] `dotnet test -p:RunWindowsTests=true` on Windows: 31/31 green
+      (2 elevation tests are opt-in and were not re-run this pass).
+- [x] `dotnet build CleanBoost.App -c Release -r win-x64` → 0 errors/0 warnings.
+- [x] `dist/CleanBoost-x64-0.2.0.msi` (67.6MB) builds; administrative install
+      extracts 506 files incl. `rules\winapp2.ini`. **Still needs a real
+      elevated install/launch/uninstall (P4).**
+- [x] `dist/CleanBoost-x64-0.2.0.msix` (83.3MB) signed `CN=JS BlueFlutex`,
+      unpacks to `Identity 0.2.0.0` + exe 0.2.0.0 (516 files), sideloadable.
+- [x] All 3 deliverables (portable zip 81.7MB, MSIX, MSI) in `dist/` and
+      uploaded to GitHub release `v0.2.0`.
+- [x] One command reproduces all three: `scripts/build-release.ps1`.
+- [ ] No signing key tracked in git (old `CleanBoostDev.pfx` still in history
+      at `f2ed5c5` — password-protected, treat as burned).
