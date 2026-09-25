@@ -9,12 +9,12 @@
     <Identity
         Name="CleanBoost"
         Publisher="CN=CleanBoostDev"
-        Version="0.1.0.0"
+        Version="0.2.0.0"
         ProcessorArchitecture="x64" />
 
     <Properties>
         <DisplayName>CleanBoost</DisplayName>
-        <PublisherDisplayName>CleanBoost</PublisherDisplayName>
+        <PublisherDisplayName>JS BlueFlutex</PublisherDisplayName>
         <Description>Safe Windows cleanup and one-click boost: temp files, browser caches, community rules, services and startup tuning.</Description>
         <Logo>Assets\StoreLogo.png</Logo>
     </Properties>
