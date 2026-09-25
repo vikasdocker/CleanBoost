@@ -1,77 +1,65 @@
-# One-shot GitHub release for CleanBoost. Run from Windows PowerShell.
-$ErrorActionPreference = 'Stop'
+# CleanBoost GitHub release (0.2+). Version auto-derived from csproj.
+# MSIX is attached as 10MB parts (GitHub 2GB cap is per-file; app sits ~85MB).
+# Run in Windows PowerShell: powershell -ExecutionPolicy Bypass -File scripts/release-github.ps1
+$ErrorActionPreference = "Stop"
 
-$repo = 'vikasdocker/CleanBoost'
-$proj = 'src/CleanBoost.App/CleanBoost.App.csproj'
-$dist = 'dist'
+$proj = "src/CleanBoost.App/CleanBoost.App.csproj"
+$ver  = (Select-String -Path $proj -Pattern "<Version>([^<]+)</Version>").Matches.Groups[1].Value
+$tag  = "v" + $ver
+$repo = "vikasdocker/CleanBoost"
 
-$version = (Select-String -Path $proj -Pattern '<Version>([^<]+)</Version>').Matches.Groups[1].Value
-Write-Host "Releasing CleanBoost v$version"
+$dist = "dist"
+$portable = "$dist/CleanBoost-x64-$ver-portable.zip"
+$msixParts = Get-ChildItem -Path $dist -Filter "CleanBoost-x64-$ver.msix*" |
+             Sort-Object Name
 
-$tag = "v$version"
-$zip = Get-ChildItem -Path $dist -Filter "CleanBoost-x64-$version-portable.zip" | Select-Object -First 1
-$msix = Get-ChildItem -Path $dist -Filter "CleanBoost-x64-$version.msix" | Select-Object -First 1
+if (-not (Test-Path $portable)) { throw "Missing $portable" }
+if (-not $msixParts) { throw "Missing CleanBoost-x64-$ver.msix* in $dist" }
 
-if (-not $zip -or -not $msix) {
-    Write-Error "Missing artifacts in $dist for $version"
+Write-Host "Publishing CleanBoost $ver from $portable + $($msixParts.Count) msix chunk(s)"
+
+# ensure the tag is on the remote (release REQUIRES it)
+$have = git ls-remote --tags origin $tag
+if (-not $have) {
+    git push origin tag $tag
+    if ($LASTEXITCODE -ne 0) { throw "Could not push tag $tag" }
 }
 
-# Fat binary chunking for MSIX (10MB boundaries)
-$chunkSize = 10 * 1024 * 1024
-$parts = @()
-$bytes = [System.IO.File]::ReadAllBytes($msix.FullName)
-$count = [Math]::Ceiling($bytes.Length / $chunkSize)
-for ($i = 0; $i -lt $count; $i++) {
-    $name = "{0}.part{1:D2}" -f $msix.Name, ($i + 1)
-    $off = $i * $chunkSize
-    $len = [Math]::Min($chunkSize, $bytes.Length - $off)
-    $chunk = New-Object byte[] $len
-    [Array]::Copy($bytes, $off, $chunk, 0, $len)
-    $path = Join-Path $dist $name
-    [System.IO.File]::WriteAllBytes($path, $chunk)
-    $parts += $path
-}
+$files = @($portable) + @($msixParts.FullName)
+$first = $files[0]
+$rest  = $files[1..($files.Length-1)]
 
-# Publish notes (Markdown body)
 $body = @"
+CleanBoost $ver - by JS BlueFluteX / vikas shelar
 
-CleanBoost `$version
+CleanBoost is a one-click Windows cleaner and booster.
 
-by **vikas shelar** (`JS BlueFluteX`)
+- Everything deleted goes to the Recycle Bin FIRST - nothing is permanent
+  until you empty it.
+- Registry cleaning is never performed.
+- Elevation only ever happens after your consent.
+- JSON community rules (winapp2.ini) are fully optional.
 
-### What this is
-A one-click Windows cleaner and booster. Deletions go to the **Recycle Bin first**; nothing is permanent until you empty it.
+Files in this release:
+- CleanBoost-x64-$ver-portable.zip  - unzip and run CleanBoost.exe
+- CleanBoost-x64-$ver.msix(.partNN) - reassemble the parts, then sideload
+  (Add-AppxPackage the reassembled single .msix)
 
-### Files
-| Asset | Purpose |
-| --- | --- |
-| `CleanBoost-x64-$version-portable.zip` | No-install portable |
-| `CleanBoost-x64-$version.msix` | MSIX for sideload |
-
-### Install
-- **Portable**: unzip, run `CleanBoost.exe`
-- **MSIX**: right-click install (needs the self-signed dev cert on first sideload)
-
-### Safety
-- Recycle Bin first, always
-- Elevation only after consent
-- No registry cleaning, no forced deletions
-
-MIT License. (c) 2026 vikas shelar / JS BlueFluteX.
+MIT License - (c) 2026 vikas shelar / JS BlueFluteX
 "@
 
-# Create release with the zip + the first MSIX part
-$release = gh release create $tag `
-    "$($zip.FullName)" `
-    "$($parts[0])" `
-    --repo $repo `
-    --title "CleanBoost $version" `
-    --notes $body
+# create with the FIRST asset so the release object pre-exists
+Write-Host "Creating release $tag with $($rest.Length+1) asset(s)..."
+gh release create $tag $first --repo $repo --title "CleanBoost $ver" --notes $body
+if ($LASTEXITCODE -ne 0) { throw "gh release create failed" }
 
-Write-Host "Release created. Uploading $($parts.Count - 1) remaining MSIX parts..."
-for ($i = 1; $i -lt $parts.Count; $i++) {
-    gh release upload $tag "$($parts[$i])" --repo $repo --clobber
+Write-Host "Uploading remaining asset(s)..."
+foreach ($f in $rest) {
+    gh release upload $tag $f --repo $repo --clobber
+    if ($LASTEXITCODE -ne 0) { throw "upload failed: $f" }
 }
 
-Write-Host "Done."
-Write-Host "URL: https://github.com/$repo/releases/tag/$tag"
+Write-Host "Verifying..."
+$json = gh release view $tag --repo $repo --json name,tagName,assets --jq "{name:.name,tag:.tagName,assets:[.assets[].name]}"
+Write-Host $json
+Write-Host "Release: https://github.com/$repo/releases/tag/$tag"
