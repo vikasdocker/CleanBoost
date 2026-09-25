@@ -2,8 +2,8 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
       Name="CleanBoost"
-      Manufacturer="CleanBoost"
-      Version="0.1.0"
+      Manufacturer="JS BlueFlutex"
+      Version="0.2.0"
       UpgradeCode="8318b96a-85f5-4bcc-884d-a7252985c17b"
       Language="1033"
       Scope="perMachine"
@@ -22,11 +22,10 @@
 
   <Fragment>
     <StandardDirectory Id="ProgramFiles64Folder">
-      <Directory Id="INSTALLFOLDER" Name="CleanBoost">
-        <Directory Id="ProgramMenuFolder">
-          <Directory Id="PROGRAMSMENUDIR" Name="CleanBoost" />
-        </Directory>
-      </Directory>
+      <Directory Id="INSTALLFOLDER" Name="CleanBoost" />
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="PROGRAMSMENUDIR" Name="CleanBoost" />
     </StandardDirectory>
   </Fragment>
 

@@ -1,688 +1,1520 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
     <ComponentGroup Id="ProductComponents">
-      <Component Id="cmp_INSTALLFOLDER" Directory="INSTALLFOLDER" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/CleanBoost.Core.dll" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/CleanBoost.deps.json" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/CleanBoost.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/CleanBoost.exe" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/CleanBoost.pri" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/CleanBoost.runtimeconfig.json" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/CleanBoost.System.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/clretwrc.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/clrgc.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/clrjit.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/CommunityToolkit.Mvvm.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/coreclr.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/CoreMessagingXP.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/createdump.exe" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/dcompi.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/DirectML.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/dwmcorei.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/DwmSceneI.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/DWriteCore.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hostfxr.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hostpolicy.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/marshal.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.CSharp.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.DiaSymReader.Native.amd64.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.DirectManipulation.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Foundation.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Graphics.Display.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Graphics.Imaging.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Graphics.Imaging.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Graphics.Imaging.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Graphics.ImagingInternal.ImageObjectRemover.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Graphics.ImagingInternal.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Graphics.Internal.Imaging.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Graphics.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.InputStateManager.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.InteractiveExperiences.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Internal.FrameworkUdk.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.ML.OnnxRuntime.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Security.Authentication.OAuth.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Security.Authentication.OAuth.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Composition.OSSupport.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Designer.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Input.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.pri" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Text.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Windowing.Core.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Windowing.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Xaml.Controls.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Xaml.Controls.pri" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.ui.xaml.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Xaml.Internal.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Xaml.Phone.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.ui.xaml.resources.19h1.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.ui.xaml.resources.common.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.UI.Xaml.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.VisualBasic.Core.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.VisualBasic.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Web.WebView2.Core.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Web.WebView2.Core.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Win32.Primitives.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Win32.Registry.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.AICapabilities.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.ContentModerationInternal.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.ContentSafety.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.ContentSafety.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.ContentSafety.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.Foundation.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.Foundation.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.FoundationInternal.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.GenerativeInternal.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.Imaging.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.Imaging.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.Imaging.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.MachineLearning.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.MachineLearning.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.MachineLearning.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.Text.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.Text.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.Text.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AI.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.Background.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.Background.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.DynamicDependency.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.Resources.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.Resources.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.Resources.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.ApplicationModel.WindowsAppRuntime.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AppLifecycle.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AppLifecycle.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AppNotifications.Builder.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AppNotifications.Builder.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AppNotifications.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.AppNotifications.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.BadgeNotifications.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.BadgeNotifications.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Foundation.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Foundation.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Globalization.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Internal.Vision.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Management.Deployment.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Management.Deployment.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Media.Capture.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Media.Capture.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Private.Workloads.SessionManager.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.PrivateCommon.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.PushNotifications.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.PushNotifications.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.SDK.NET.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Security.AccessControl.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Security.AccessControl.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.SemanticSearch.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Storage.Pickers.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Storage.Pickers.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Storage.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Storage.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.System.Power.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.System.Power.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.System.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.System.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Vision.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.VisionInternal.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Widgets.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Widgets.Projection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Widgets.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Workloads.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Workloads.Resources.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Workloads.Resources_ec.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.Windows.Workloads.winmd" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.WindowsAppRuntime.Bootstrap.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.WindowsAppRuntime.Bootstrap.Net.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.WindowsAppRuntime.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.WindowsAppRuntime.Insights.Resource.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.WindowsAppRuntime.pri" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/Microsoft.WinUI.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/MRM.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mscordaccore.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mscordaccore_amd64_amd64_8.0.3126.42015.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mscordbi.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mscorlib.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mscorrc.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/msquic.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/netstandard.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/onnxruntime.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/onnxruntime_providers_shared.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/PushNotificationsLongRunningTask.ProxyStub.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/RestartAgent.exe" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/SessionHandleIPCProxyStub.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.AppContext.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Buffers.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Collections.Concurrent.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Collections.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Collections.Immutable.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Collections.NonGeneric.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Collections.Specialized.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ComponentModel.Annotations.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ComponentModel.DataAnnotations.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ComponentModel.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ComponentModel.EventBasedAsync.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ComponentModel.Primitives.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ComponentModel.TypeConverter.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Configuration.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Console.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Core.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Data.Common.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Data.DataSetExtensions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Data.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.Contracts.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.Debug.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.DiagnosticSource.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.FileVersionInfo.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.Process.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.StackTrace.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.TextWriterTraceListener.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.Tools.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.TraceSource.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Diagnostics.Tracing.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Drawing.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Drawing.Primitives.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Dynamic.Runtime.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Formats.Asn1.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Formats.Tar.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Globalization.Calendars.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Globalization.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Globalization.Extensions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.Compression.Brotli.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.Compression.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.Compression.FileSystem.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.Compression.Native.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.Compression.ZipFile.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.FileSystem.AccessControl.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.FileSystem.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.FileSystem.DriveInfo.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.FileSystem.Primitives.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.FileSystem.Watcher.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.IsolatedStorage.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.MemoryMappedFiles.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.Pipes.AccessControl.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.Pipes.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.IO.UnmanagedMemoryStream.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Linq.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Linq.Expressions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Linq.Parallel.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Linq.Queryable.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Memory.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.Http.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.Http.Json.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.HttpListener.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.Mail.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.NameResolution.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.NetworkInformation.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.Ping.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.Primitives.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.Quic.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.Requests.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.Security.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.ServicePoint.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.Sockets.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.WebClient.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.WebHeaderCollection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.WebProxy.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.WebSockets.Client.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Net.WebSockets.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Numerics.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Numerics.Tensors.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Numerics.Vectors.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ObjectModel.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Private.CoreLib.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Private.DataContractSerialization.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Private.Uri.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Private.Xml.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Private.Xml.Linq.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Reflection.DispatchProxy.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Reflection.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Reflection.Emit.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Reflection.Emit.ILGeneration.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Reflection.Emit.Lightweight.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Reflection.Extensions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Reflection.Metadata.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Reflection.Primitives.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Reflection.TypeExtensions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Resources.Reader.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Resources.ResourceManager.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Resources.Writer.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.CompilerServices.Unsafe.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.CompilerServices.VisualC.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Extensions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Handles.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.InteropServices.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.InteropServices.JavaScript.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.InteropServices.RuntimeInformation.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Intrinsics.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Loader.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Numerics.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Serialization.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Serialization.Formatters.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Serialization.Json.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Serialization.Primitives.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Runtime.Serialization.Xml.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.AccessControl.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Claims.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Cryptography.Algorithms.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Cryptography.Cng.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Cryptography.Csp.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Cryptography.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Cryptography.Encoding.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Cryptography.OpenSsl.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Cryptography.Primitives.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Cryptography.X509Certificates.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Principal.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.Principal.Windows.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Security.SecureString.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ServiceModel.Web.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ServiceProcess.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Text.Encoding.CodePages.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Text.Encoding.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Text.Encoding.Extensions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Text.Encodings.Web.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Text.Json.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Text.RegularExpressions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.Channels.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.Overlapped.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.Tasks.Dataflow.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.Tasks.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.Tasks.Extensions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.Tasks.Parallel.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.Thread.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.ThreadPool.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Threading.Timer.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Transactions.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Transactions.Local.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.ValueTuple.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Web.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Web.HttpUtility.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Windows.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Xml.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Xml.Linq.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Xml.ReaderWriter.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Xml.Serialization.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Xml.XDocument.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Xml.XmlDocument.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Xml.XmlSerializer.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Xml.XPath.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/System.Xml.XPath.XDocument.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/WebView2Loader.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/WindowsAppRuntime.DeploymentExtensions.OneCore.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/WindowsAppRuntime.png" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/WindowsAppSdk.AppxDeploymentExtensions.Desktop-EventLog-Instrumentation.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/WindowsAppSdk.AppxDeploymentExtensions.Desktop.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/WindowsBase.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/WinRT.Runtime.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/WinUIEdit.dll" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/workloads.365.json" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/workloads.j32.json" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/workloads.json" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/workloads.lnl.json" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/workloads.qnn.json" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/workloads.stx.json" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/wuceffectsi.dll" />
-      </Component>
-      <Component Id="cmp_DIR_af_ZA" Directory="DIR_af_ZA" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/af-ZA/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/af-ZA/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_am_ET" Directory="DIR_am_ET" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/am-ET/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/am-ET/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ar_SA" Directory="DIR_ar_SA" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ar-SA/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ar-SA/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_as_IN" Directory="DIR_as_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/as-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/as-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_az_Latn_AZ" Directory="DIR_az_Latn_AZ" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/az-Latn-AZ/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/az-Latn-AZ/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_bg_BG" Directory="DIR_bg_BG" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/bg-BG/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/bg-BG/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_bn_IN" Directory="DIR_bn_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/bn-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/bn-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_bs_Latn_BA" Directory="DIR_bs_Latn_BA" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/bs-Latn-BA/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/bs-Latn-BA/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ca_ES" Directory="DIR_ca_ES" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ca-ES/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ca-ES/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ca_Es_VALENCIA" Directory="DIR_ca_Es_VALENCIA" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ca-Es-VALENCIA/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ca-Es-VALENCIA/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_cs_CZ" Directory="DIR_cs_CZ" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/cs-CZ/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/cs-CZ/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_cy_GB" Directory="DIR_cy_GB" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/cy-GB/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/cy-GB/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_da_DK" Directory="DIR_da_DK" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/da-DK/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/da-DK/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_de_DE" Directory="DIR_de_DE" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/de-DE/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/de-DE/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_el_GR" Directory="DIR_el_GR" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/el-GR/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/el-GR/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_en_GB" Directory="DIR_en_GB" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/en-GB/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/en-GB/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_en_us" Directory="DIR_en_us" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/en-us/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/en-us/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_es_ES" Directory="DIR_es_ES" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/es-ES/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/es-ES/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_es_MX" Directory="DIR_es_MX" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/es-MX/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/es-MX/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_et_EE" Directory="DIR_et_EE" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/et-EE/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/et-EE/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_eu_ES" Directory="DIR_eu_ES" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/eu-ES/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/eu-ES/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_fa_IR" Directory="DIR_fa_IR" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fa-IR/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fa-IR/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_fi_FI" Directory="DIR_fi_FI" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fi-FI/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fi-FI/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_fil_PH" Directory="DIR_fil_PH" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fil-PH/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fil-PH/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_fr_CA" Directory="DIR_fr_CA" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fr-CA/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fr-CA/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_fr_FR" Directory="DIR_fr_FR" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fr-FR/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/fr-FR/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ga_IE" Directory="DIR_ga_IE" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ga-IE/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ga-IE/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_gd_gb" Directory="DIR_gd_gb" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/gd-gb/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/gd-gb/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_gl_ES" Directory="DIR_gl_ES" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/gl-ES/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/gl-ES/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_gu_IN" Directory="DIR_gu_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/gu-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/gu-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_he_IL" Directory="DIR_he_IL" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/he-IL/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/he-IL/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_hi_IN" Directory="DIR_hi_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hi-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hi-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_hr_HR" Directory="DIR_hr_HR" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hr-HR/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hr-HR/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_hu_HU" Directory="DIR_hu_HU" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hu-HU/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hu-HU/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_hy_AM" Directory="DIR_hy_AM" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hy-AM/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/hy-AM/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_id_ID" Directory="DIR_id_ID" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/id-ID/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/id-ID/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_is_IS" Directory="DIR_is_IS" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/is-IS/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/is-IS/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_it_IT" Directory="DIR_it_IT" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/it-IT/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/it-IT/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ja_JP" Directory="DIR_ja_JP" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ja-JP/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ja-JP/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ka_GE" Directory="DIR_ka_GE" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ka-GE/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ka-GE/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_kk_KZ" Directory="DIR_kk_KZ" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/kk-KZ/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/kk-KZ/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_km_KH" Directory="DIR_km_KH" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/km-KH/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/km-KH/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_kn_IN" Directory="DIR_kn_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/kn-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/kn-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ko_KR" Directory="DIR_ko_KR" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ko-KR/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ko-KR/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_kok_IN" Directory="DIR_kok_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/kok-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/kok-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_lb_LU" Directory="DIR_lb_LU" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/lb-LU/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/lb-LU/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_lo_LA" Directory="DIR_lo_LA" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/lo-LA/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/lo-LA/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_lt_LT" Directory="DIR_lt_LT" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/lt-LT/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/lt-LT/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_lv_LV" Directory="DIR_lv_LV" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/lv-LV/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/lv-LV/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_mi_NZ" Directory="DIR_mi_NZ" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mi-NZ/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mi-NZ/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_mk_MK" Directory="DIR_mk_MK" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mk-MK/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mk-MK/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ml_IN" Directory="DIR_ml_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ml-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ml-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_mr_IN" Directory="DIR_mr_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mr-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mr-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ms_MY" Directory="DIR_ms_MY" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ms-MY/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ms-MY/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_mt_MT" Directory="DIR_mt_MT" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mt-MT/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/mt-MT/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_nb_NO" Directory="DIR_nb_NO" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/nb-NO/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/nb-NO/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ne_NP" Directory="DIR_ne_NP" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ne-NP/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ne-NP/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_nl_NL" Directory="DIR_nl_NL" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/nl-NL/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/nl-NL/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_nn_NO" Directory="DIR_nn_NO" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/nn-NO/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/nn-NO/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_NpuDetect" Directory="DIR_NpuDetect" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/NpuDetect/NPUDetect.dll" KeyPath="yes" />
-      </Component>
-      <Component Id="cmp_DIR_or_IN" Directory="DIR_or_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/or-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/or-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_pa_IN" Directory="DIR_pa_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/pa-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/pa-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_pl_PL" Directory="DIR_pl_PL" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/pl-PL/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/pl-PL/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_pt_BR" Directory="DIR_pt_BR" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/pt-BR/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/pt-BR/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_pt_PT" Directory="DIR_pt_PT" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/pt-PT/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/pt-PT/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_quz_PE" Directory="DIR_quz_PE" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/quz-PE/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/quz-PE/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ro_RO" Directory="DIR_ro_RO" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ro-RO/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ro-RO/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ru_RU" Directory="DIR_ru_RU" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ru-RU/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ru-RU/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_rules" Directory="DIR_rules" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/rules/winapp2.ini" KeyPath="yes" />
-      </Component>
-      <Component Id="cmp_DIR_sk_SK" Directory="DIR_sk_SK" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sk-SK/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sk-SK/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_sl_SI" Directory="DIR_sl_SI" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sl-SI/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sl-SI/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_sq_AL" Directory="DIR_sq_AL" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sq-AL/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sq-AL/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_sr_Cyrl_BA" Directory="DIR_sr_Cyrl_BA" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sr-Cyrl-BA/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sr-Cyrl-BA/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_sr_Cyrl_RS" Directory="DIR_sr_Cyrl_RS" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sr-Cyrl-RS/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sr-Cyrl-RS/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_sr_Latn_RS" Directory="DIR_sr_Latn_RS" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sr-Latn-RS/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sr-Latn-RS/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_sv_SE" Directory="DIR_sv_SE" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sv-SE/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/sv-SE/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ta_IN" Directory="DIR_ta_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ta-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ta-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_te_IN" Directory="DIR_te_IN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/te-IN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/te-IN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_th_TH" Directory="DIR_th_TH" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/th-TH/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/th-TH/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_tr_TR" Directory="DIR_tr_TR" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/tr-TR/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/tr-TR/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_tt_RU" Directory="DIR_tt_RU" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/tt-RU/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/tt-RU/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ug_CN" Directory="DIR_ug_CN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ug-CN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ug-CN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_uk_UA" Directory="DIR_uk_UA" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/uk-UA/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/uk-UA/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_ur_PK" Directory="DIR_ur_PK" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ur-PK/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/ur-PK/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_uz_Latn_UZ" Directory="DIR_uz_Latn_UZ" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/uz-Latn-UZ/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/uz-Latn-UZ/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_vi_VN" Directory="DIR_vi_VN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/vi-VN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/vi-VN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_zh_CN" Directory="DIR_zh_CN" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/zh-CN/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/zh-CN/Microsoft.UI.Xaml.Phone.dll.mui" />
-      </Component>
-      <Component Id="cmp_DIR_zh_TW" Directory="DIR_zh_TW" Guid="*">
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/zh-TW/Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
-        <File Source="/mnt/c/Users/vikas/CleanBoost/publish/win-x64/zh-TW/Microsoft.UI.Xaml.Phone.dll.mui" />
+      <Component Id="cmp_INSTALLFOLDER_0" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\CleanBoost.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_1" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\CleanBoost.deps.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_2" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\CleanBoost.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_3" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\CleanBoost.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_4" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\CleanBoost.pri" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_5" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\CleanBoost.runtimeconfig.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_6" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\CleanBoost.System.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_7" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\clretwrc.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_8" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\clrgc.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_9" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\clrjit.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_10" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\CommunityToolkit.Mvvm.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_11" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\coreclr.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_12" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\CoreMessagingXP.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_13" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\createdump.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_14" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\dcompi.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_15" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\DirectML.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_16" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\dwmcorei.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_17" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\DwmSceneI.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_18" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\DWriteCore.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_19" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hostfxr.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_20" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hostpolicy.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_21" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\marshal.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_22" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.CSharp.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_23" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.DiaSymReader.Native.amd64.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_24" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.DirectManipulation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_25" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Foundation.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_26" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Graphics.Display.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_27" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Graphics.Imaging.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_28" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Graphics.Imaging.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_29" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Graphics.Imaging.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_30" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Graphics.ImagingInternal.ImageObjectRemover.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_31" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Graphics.ImagingInternal.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_32" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Graphics.Internal.Imaging.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_33" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Graphics.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_34" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.InputStateManager.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_35" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.InteractiveExperiences.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_36" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Internal.FrameworkUdk.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_37" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.ML.OnnxRuntime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_38" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Security.Authentication.OAuth.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_39" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Security.Authentication.OAuth.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_40" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Composition.OSSupport.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_41" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Designer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_42" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_43" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Input.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_44" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.pri" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_45" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Text.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_46" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Windowing.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_47" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Windowing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_48" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_49" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Xaml.Controls.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_50" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Xaml.Controls.pri" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_51" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.ui.xaml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_52" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Xaml.Internal.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_53" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Xaml.Phone.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_54" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.ui.xaml.resources.19h1.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_55" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.ui.xaml.resources.common.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_56" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.UI.Xaml.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_57" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.VisualBasic.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_58" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.VisualBasic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_59" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Web.WebView2.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_60" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Web.WebView2.Core.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_61" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Win32.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_62" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Win32.Registry.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_63" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.AICapabilities.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_64" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.ContentModerationInternal.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_65" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.ContentSafety.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_66" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.ContentSafety.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_67" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.ContentSafety.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_68" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.Foundation.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_69" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.Foundation.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_70" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.FoundationInternal.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_71" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.GenerativeInternal.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_72" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.Imaging.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_73" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.Imaging.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_74" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.Imaging.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_75" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.MachineLearning.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_76" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.MachineLearning.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_77" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.MachineLearning.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_78" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_79" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.Text.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_80" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.Text.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_81" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.Text.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_82" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AI.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_83" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.Background.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_84" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_85" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_86" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.Background.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_87" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.DynamicDependency.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_88" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.DynamicDependency.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_89" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.Resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_90" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.Resources.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_91" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.Resources.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_92" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_93" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.ApplicationModel.WindowsAppRuntime.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_94" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AppLifecycle.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_95" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AppLifecycle.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_96" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AppNotifications.Builder.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_97" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AppNotifications.Builder.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_98" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AppNotifications.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_99" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.AppNotifications.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_100" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.BadgeNotifications.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_101" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.BadgeNotifications.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_102" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Foundation.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_103" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Foundation.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_104" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Globalization.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_105" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Internal.Vision.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_106" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Management.Deployment.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_107" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Management.Deployment.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_108" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Media.Capture.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_109" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Media.Capture.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_110" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Private.Workloads.SessionManager.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_111" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.PrivateCommon.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_112" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.PushNotifications.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_113" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.PushNotifications.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_114" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.SDK.NET.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_115" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Security.AccessControl.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_116" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Security.AccessControl.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_117" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.SemanticSearch.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_118" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Storage.Pickers.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_119" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Storage.Pickers.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_120" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Storage.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_121" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Storage.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_122" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.System.Power.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_123" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.System.Power.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_124" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.System.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_125" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.System.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_126" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Vision.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_127" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.VisionInternal.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_128" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Widgets.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_129" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Widgets.Projection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_130" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Widgets.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_131" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Workloads.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_132" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Workloads.Resources.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_133" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Workloads.Resources_ec.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_134" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.Windows.Workloads.winmd" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_135" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.WindowsAppRuntime.Bootstrap.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_136" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_137" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.WindowsAppRuntime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_138" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.WindowsAppRuntime.Insights.Resource.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_139" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.WindowsAppRuntime.pri" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_140" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\Microsoft.WinUI.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_141" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\MRM.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_142" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mscordaccore.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_143" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mscordaccore_amd64_amd64_8.0.3126.42015.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_144" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mscordbi.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_145" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mscorlib.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_146" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mscorrc.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_147" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\msquic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_148" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\netstandard.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_149" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\onnxruntime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_150" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\onnxruntime_providers_shared.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_151" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\PushNotificationsLongRunningTask.ProxyStub.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_152" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\RestartAgent.exe" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_153" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\SessionHandleIPCProxyStub.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_154" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.AppContext.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_155" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Buffers.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_156" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Collections.Concurrent.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_157" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Collections.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_158" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Collections.Immutable.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_159" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Collections.NonGeneric.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_160" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Collections.Specialized.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_161" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ComponentModel.Annotations.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_162" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ComponentModel.DataAnnotations.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_163" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ComponentModel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_164" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ComponentModel.EventBasedAsync.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_165" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ComponentModel.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_166" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ComponentModel.TypeConverter.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_167" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Configuration.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_168" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Console.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_169" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Core.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_170" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Data.Common.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_171" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Data.DataSetExtensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_172" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Data.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_173" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.Contracts.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_174" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.Debug.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_175" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.DiagnosticSource.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_176" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.FileVersionInfo.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_177" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.Process.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_178" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.StackTrace.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_179" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.TextWriterTraceListener.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_180" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.Tools.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_181" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.TraceSource.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_182" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Diagnostics.Tracing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_183" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_184" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Drawing.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_185" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Drawing.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_186" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Dynamic.Runtime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_187" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Formats.Asn1.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_188" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Formats.Tar.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_189" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Globalization.Calendars.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_190" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Globalization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_191" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Globalization.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_192" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.Compression.Brotli.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_193" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.Compression.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_194" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.Compression.FileSystem.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_195" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.Compression.Native.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_196" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.Compression.ZipFile.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_197" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_198" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.FileSystem.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_199" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.FileSystem.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_200" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.FileSystem.DriveInfo.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_201" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.FileSystem.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_202" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.FileSystem.Watcher.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_203" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.IsolatedStorage.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_204" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.MemoryMappedFiles.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_205" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.Pipes.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_206" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.Pipes.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_207" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.IO.UnmanagedMemoryStream.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_208" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Linq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_209" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Linq.Expressions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_210" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Linq.Parallel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_211" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Linq.Queryable.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_212" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Memory.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_213" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_214" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.Http.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_215" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.Http.Json.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_216" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.HttpListener.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_217" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.Mail.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_218" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.NameResolution.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_219" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.NetworkInformation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_220" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.Ping.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_221" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_222" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.Quic.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_223" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.Requests.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_224" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.Security.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_225" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.ServicePoint.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_226" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.Sockets.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_227" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.WebClient.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_228" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.WebHeaderCollection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_229" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.WebProxy.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_230" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.WebSockets.Client.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_231" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Net.WebSockets.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_232" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Numerics.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_233" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Numerics.Tensors.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_234" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Numerics.Vectors.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_235" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ObjectModel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_236" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Private.CoreLib.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_237" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Private.DataContractSerialization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_238" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Private.Uri.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_239" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Private.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_240" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Private.Xml.Linq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_241" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Reflection.DispatchProxy.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_242" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Reflection.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_243" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Reflection.Emit.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_244" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Reflection.Emit.ILGeneration.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_245" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Reflection.Emit.Lightweight.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_246" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Reflection.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_247" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Reflection.Metadata.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_248" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Reflection.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_249" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Reflection.TypeExtensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_250" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Resources.Reader.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_251" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Resources.ResourceManager.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_252" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Resources.Writer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_253" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.CompilerServices.Unsafe.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_254" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.CompilerServices.VisualC.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_255" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_256" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_257" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Handles.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_258" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.InteropServices.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_259" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.InteropServices.JavaScript.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_260" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.InteropServices.RuntimeInformation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_261" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Intrinsics.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_262" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Loader.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_263" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Numerics.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_264" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Serialization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_265" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Serialization.Formatters.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_266" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Serialization.Json.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_267" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Serialization.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_268" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Runtime.Serialization.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_269" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.AccessControl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_270" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Claims.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_271" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Cryptography.Algorithms.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_272" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Cryptography.Cng.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_273" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Cryptography.Csp.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_274" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Cryptography.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_275" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Cryptography.Encoding.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_276" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Cryptography.OpenSsl.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_277" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Cryptography.Primitives.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_278" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Cryptography.X509Certificates.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_279" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_280" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Principal.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_281" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.Principal.Windows.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_282" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Security.SecureString.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_283" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ServiceModel.Web.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_284" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ServiceProcess.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_285" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Text.Encoding.CodePages.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_286" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Text.Encoding.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_287" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Text.Encoding.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_288" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Text.Encodings.Web.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_289" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Text.Json.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_290" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Text.RegularExpressions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_291" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.Channels.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_292" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_293" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.Overlapped.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_294" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.Tasks.Dataflow.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_295" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.Tasks.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_296" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.Tasks.Extensions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_297" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.Tasks.Parallel.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_298" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.Thread.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_299" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.ThreadPool.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_300" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Threading.Timer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_301" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Transactions.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_302" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Transactions.Local.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_303" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.ValueTuple.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_304" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Web.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_305" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Web.HttpUtility.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_306" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Windows.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_307" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Xml.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_308" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Xml.Linq.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_309" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Xml.ReaderWriter.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_310" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Xml.Serialization.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_311" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Xml.XDocument.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_312" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Xml.XmlDocument.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_313" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Xml.XmlSerializer.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_314" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Xml.XPath.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_315" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\System.Xml.XPath.XDocument.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_316" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\WebView2Loader.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_317" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\WindowsAppRuntime.DeploymentExtensions.OneCore.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_318" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\WindowsAppRuntime.png" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_319" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\WindowsAppSdk.AppxDeploymentExtensions.Desktop.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_320" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\WindowsAppSdk.AppxDeploymentExtensions.Desktop-EventLog-Instrumentation.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_321" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\WindowsBase.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_322" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\WinRT.Runtime.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_323" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\WinUIEdit.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_324" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\workloads.365.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_325" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\workloads.j32.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_326" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\workloads.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_327" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\workloads.lnl.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_328" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\workloads.qnn.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_329" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\workloads.stx.json" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_INSTALLFOLDER_330" Directory="INSTALLFOLDER" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\wuceffectsi.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_af_ZA_0" Directory="DIR_af_ZA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\af-ZA\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_af_ZA_1" Directory="DIR_af_ZA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\af-ZA\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_am_ET_0" Directory="DIR_am_ET" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\am-ET\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_am_ET_1" Directory="DIR_am_ET" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\am-ET\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ar_SA_0" Directory="DIR_ar_SA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ar-SA\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ar_SA_1" Directory="DIR_ar_SA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ar-SA\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_as_IN_0" Directory="DIR_as_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\as-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_as_IN_1" Directory="DIR_as_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\as-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_az_Latn_AZ_0" Directory="DIR_az_Latn_AZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\az-Latn-AZ\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_az_Latn_AZ_1" Directory="DIR_az_Latn_AZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\az-Latn-AZ\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_bg_BG_0" Directory="DIR_bg_BG" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\bg-BG\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_bg_BG_1" Directory="DIR_bg_BG" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\bg-BG\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_bn_IN_0" Directory="DIR_bn_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\bn-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_bn_IN_1" Directory="DIR_bn_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\bn-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_bs_Latn_BA_0" Directory="DIR_bs_Latn_BA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\bs-Latn-BA\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_bs_Latn_BA_1" Directory="DIR_bs_Latn_BA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\bs-Latn-BA\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ca_ES_0" Directory="DIR_ca_ES" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ca-ES\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ca_ES_1" Directory="DIR_ca_ES" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ca-ES\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ca_Es_VALENCIA_0" Directory="DIR_ca_Es_VALENCIA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ca-Es-VALENCIA\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ca_Es_VALENCIA_1" Directory="DIR_ca_Es_VALENCIA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ca-Es-VALENCIA\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_cs_CZ_0" Directory="DIR_cs_CZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\cs-CZ\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_cs_CZ_1" Directory="DIR_cs_CZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\cs-CZ\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_cy_GB_0" Directory="DIR_cy_GB" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\cy-GB\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_cy_GB_1" Directory="DIR_cy_GB" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\cy-GB\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_da_DK_0" Directory="DIR_da_DK" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\da-DK\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_da_DK_1" Directory="DIR_da_DK" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\da-DK\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_de_DE_0" Directory="DIR_de_DE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\de-DE\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_de_DE_1" Directory="DIR_de_DE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\de-DE\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_el_GR_0" Directory="DIR_el_GR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\el-GR\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_el_GR_1" Directory="DIR_el_GR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\el-GR\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_en_GB_0" Directory="DIR_en_GB" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\en-GB\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_en_GB_1" Directory="DIR_en_GB" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\en-GB\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_en_us_0" Directory="DIR_en_us" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\en-us\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_en_us_1" Directory="DIR_en_us" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\en-us\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_es_ES_0" Directory="DIR_es_ES" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\es-ES\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_es_ES_1" Directory="DIR_es_ES" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\es-ES\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_es_MX_0" Directory="DIR_es_MX" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\es-MX\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_es_MX_1" Directory="DIR_es_MX" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\es-MX\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_et_EE_0" Directory="DIR_et_EE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\et-EE\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_et_EE_1" Directory="DIR_et_EE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\et-EE\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_eu_ES_0" Directory="DIR_eu_ES" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\eu-ES\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_eu_ES_1" Directory="DIR_eu_ES" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\eu-ES\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fa_IR_0" Directory="DIR_fa_IR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fa-IR\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fa_IR_1" Directory="DIR_fa_IR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fa-IR\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fi_FI_0" Directory="DIR_fi_FI" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fi-FI\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fi_FI_1" Directory="DIR_fi_FI" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fi-FI\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fil_PH_0" Directory="DIR_fil_PH" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fil-PH\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fil_PH_1" Directory="DIR_fil_PH" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fil-PH\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fr_CA_0" Directory="DIR_fr_CA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fr-CA\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fr_CA_1" Directory="DIR_fr_CA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fr-CA\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fr_FR_0" Directory="DIR_fr_FR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fr-FR\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_fr_FR_1" Directory="DIR_fr_FR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\fr-FR\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ga_IE_0" Directory="DIR_ga_IE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ga-IE\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ga_IE_1" Directory="DIR_ga_IE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ga-IE\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_gd_gb_0" Directory="DIR_gd_gb" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\gd-gb\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_gd_gb_1" Directory="DIR_gd_gb" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\gd-gb\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_gl_ES_0" Directory="DIR_gl_ES" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\gl-ES\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_gl_ES_1" Directory="DIR_gl_ES" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\gl-ES\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_gu_IN_0" Directory="DIR_gu_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\gu-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_gu_IN_1" Directory="DIR_gu_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\gu-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_he_IL_0" Directory="DIR_he_IL" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\he-IL\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_he_IL_1" Directory="DIR_he_IL" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\he-IL\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_hi_IN_0" Directory="DIR_hi_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hi-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_hi_IN_1" Directory="DIR_hi_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hi-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_hr_HR_0" Directory="DIR_hr_HR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hr-HR\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_hr_HR_1" Directory="DIR_hr_HR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hr-HR\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_hu_HU_0" Directory="DIR_hu_HU" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hu-HU\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_hu_HU_1" Directory="DIR_hu_HU" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hu-HU\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_hy_AM_0" Directory="DIR_hy_AM" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hy-AM\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_hy_AM_1" Directory="DIR_hy_AM" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\hy-AM\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_id_ID_0" Directory="DIR_id_ID" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\id-ID\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_id_ID_1" Directory="DIR_id_ID" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\id-ID\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_is_IS_0" Directory="DIR_is_IS" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\is-IS\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_is_IS_1" Directory="DIR_is_IS" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\is-IS\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_it_IT_0" Directory="DIR_it_IT" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\it-IT\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_it_IT_1" Directory="DIR_it_IT" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\it-IT\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ja_JP_0" Directory="DIR_ja_JP" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ja-JP\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ja_JP_1" Directory="DIR_ja_JP" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ja-JP\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ka_GE_0" Directory="DIR_ka_GE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ka-GE\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ka_GE_1" Directory="DIR_ka_GE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ka-GE\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_kk_KZ_0" Directory="DIR_kk_KZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\kk-KZ\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_kk_KZ_1" Directory="DIR_kk_KZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\kk-KZ\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_km_KH_0" Directory="DIR_km_KH" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\km-KH\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_km_KH_1" Directory="DIR_km_KH" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\km-KH\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_kn_IN_0" Directory="DIR_kn_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\kn-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_kn_IN_1" Directory="DIR_kn_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\kn-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_kok_IN_0" Directory="DIR_kok_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\kok-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_kok_IN_1" Directory="DIR_kok_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\kok-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ko_KR_0" Directory="DIR_ko_KR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ko-KR\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ko_KR_1" Directory="DIR_ko_KR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ko-KR\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_lb_LU_0" Directory="DIR_lb_LU" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\lb-LU\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_lb_LU_1" Directory="DIR_lb_LU" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\lb-LU\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_lo_LA_0" Directory="DIR_lo_LA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\lo-LA\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_lo_LA_1" Directory="DIR_lo_LA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\lo-LA\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_lt_LT_0" Directory="DIR_lt_LT" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\lt-LT\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_lt_LT_1" Directory="DIR_lt_LT" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\lt-LT\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_lv_LV_0" Directory="DIR_lv_LV" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\lv-LV\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_lv_LV_1" Directory="DIR_lv_LV" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\lv-LV\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_mi_NZ_0" Directory="DIR_mi_NZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mi-NZ\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_mi_NZ_1" Directory="DIR_mi_NZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mi-NZ\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_mk_MK_0" Directory="DIR_mk_MK" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mk-MK\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_mk_MK_1" Directory="DIR_mk_MK" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mk-MK\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ml_IN_0" Directory="DIR_ml_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ml-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ml_IN_1" Directory="DIR_ml_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ml-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_mr_IN_0" Directory="DIR_mr_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mr-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_mr_IN_1" Directory="DIR_mr_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mr-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ms_MY_0" Directory="DIR_ms_MY" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ms-MY\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ms_MY_1" Directory="DIR_ms_MY" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ms-MY\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_mt_MT_0" Directory="DIR_mt_MT" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mt-MT\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_mt_MT_1" Directory="DIR_mt_MT" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\mt-MT\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_nb_NO_0" Directory="DIR_nb_NO" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\nb-NO\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_nb_NO_1" Directory="DIR_nb_NO" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\nb-NO\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ne_NP_0" Directory="DIR_ne_NP" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ne-NP\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ne_NP_1" Directory="DIR_ne_NP" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ne-NP\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_nl_NL_0" Directory="DIR_nl_NL" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\nl-NL\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_nl_NL_1" Directory="DIR_nl_NL" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\nl-NL\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_nn_NO_0" Directory="DIR_nn_NO" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\nn-NO\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_nn_NO_1" Directory="DIR_nn_NO" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\nn-NO\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_NpuDetect_0" Directory="DIR_NpuDetect" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\NpuDetect\NPUDetect.dll" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_or_IN_0" Directory="DIR_or_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\or-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_or_IN_1" Directory="DIR_or_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\or-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_pa_IN_0" Directory="DIR_pa_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\pa-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_pa_IN_1" Directory="DIR_pa_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\pa-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_pl_PL_0" Directory="DIR_pl_PL" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\pl-PL\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_pl_PL_1" Directory="DIR_pl_PL" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\pl-PL\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_pt_BR_0" Directory="DIR_pt_BR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\pt-BR\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_pt_BR_1" Directory="DIR_pt_BR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\pt-BR\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_pt_PT_0" Directory="DIR_pt_PT" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\pt-PT\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_pt_PT_1" Directory="DIR_pt_PT" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\pt-PT\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_quz_PE_0" Directory="DIR_quz_PE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\quz-PE\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_quz_PE_1" Directory="DIR_quz_PE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\quz-PE\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ro_RO_0" Directory="DIR_ro_RO" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ro-RO\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ro_RO_1" Directory="DIR_ro_RO" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ro-RO\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_rules_0" Directory="DIR_rules" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\rules\winapp2.ini" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ru_RU_0" Directory="DIR_ru_RU" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ru-RU\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ru_RU_1" Directory="DIR_ru_RU" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ru-RU\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sk_SK_0" Directory="DIR_sk_SK" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sk-SK\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sk_SK_1" Directory="DIR_sk_SK" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sk-SK\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sl_SI_0" Directory="DIR_sl_SI" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sl-SI\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sl_SI_1" Directory="DIR_sl_SI" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sl-SI\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sq_AL_0" Directory="DIR_sq_AL" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sq-AL\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sq_AL_1" Directory="DIR_sq_AL" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sq-AL\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sr_Cyrl_BA_0" Directory="DIR_sr_Cyrl_BA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sr-Cyrl-BA\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sr_Cyrl_BA_1" Directory="DIR_sr_Cyrl_BA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sr-Cyrl-BA\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sr_Cyrl_RS_0" Directory="DIR_sr_Cyrl_RS" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sr-Cyrl-RS\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sr_Cyrl_RS_1" Directory="DIR_sr_Cyrl_RS" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sr-Cyrl-RS\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sr_Latn_RS_0" Directory="DIR_sr_Latn_RS" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sr-Latn-RS\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sr_Latn_RS_1" Directory="DIR_sr_Latn_RS" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sr-Latn-RS\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sv_SE_0" Directory="DIR_sv_SE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sv-SE\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_sv_SE_1" Directory="DIR_sv_SE" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\sv-SE\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ta_IN_0" Directory="DIR_ta_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ta-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ta_IN_1" Directory="DIR_ta_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ta-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_te_IN_0" Directory="DIR_te_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\te-IN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_te_IN_1" Directory="DIR_te_IN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\te-IN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_th_TH_0" Directory="DIR_th_TH" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\th-TH\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_th_TH_1" Directory="DIR_th_TH" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\th-TH\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_tr_TR_0" Directory="DIR_tr_TR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\tr-TR\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_tr_TR_1" Directory="DIR_tr_TR" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\tr-TR\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_tt_RU_0" Directory="DIR_tt_RU" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\tt-RU\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_tt_RU_1" Directory="DIR_tt_RU" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\tt-RU\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ug_CN_0" Directory="DIR_ug_CN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ug-CN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ug_CN_1" Directory="DIR_ug_CN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ug-CN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_uk_UA_0" Directory="DIR_uk_UA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\uk-UA\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_uk_UA_1" Directory="DIR_uk_UA" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\uk-UA\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ur_PK_0" Directory="DIR_ur_PK" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ur-PK\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_ur_PK_1" Directory="DIR_ur_PK" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\ur-PK\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_uz_Latn_UZ_0" Directory="DIR_uz_Latn_UZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\uz-Latn-UZ\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_uz_Latn_UZ_1" Directory="DIR_uz_Latn_UZ" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\uz-Latn-UZ\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_vi_VN_0" Directory="DIR_vi_VN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\vi-VN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_vi_VN_1" Directory="DIR_vi_VN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\vi-VN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_zh_CN_0" Directory="DIR_zh_CN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\zh-CN\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_zh_CN_1" Directory="DIR_zh_CN" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\zh-CN\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_zh_TW_0" Directory="DIR_zh_TW" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\zh-TW\Microsoft.ui.xaml.dll.mui" KeyPath="yes" />
+      </Component>
+      <Component Id="cmp_DIR_zh_TW_1" Directory="DIR_zh_TW" Guid="*">
+        <File Source="C:\Users\vikas\CleanBoost\publish\win-x64\zh-TW\Microsoft.UI.Xaml.Phone.dll.mui" KeyPath="yes" />
       </Component>
     </ComponentGroup>
     <DirectoryRef Id="INSTALLFOLDER">
@@ -729,14 +1561,14 @@
       <Directory Id="DIR_kk_KZ" Name="kk-KZ" />
       <Directory Id="DIR_km_KH" Name="km-KH" />
       <Directory Id="DIR_kn_IN" Name="kn-IN" />
-      <Directory Id="DIR_ko_KR" Name="ko-KR" />
       <Directory Id="DIR_kok_IN" Name="kok-IN" />
+      <Directory Id="DIR_ko_KR" Name="ko-KR" />
       <Directory Id="DIR_lb_LU" Name="lb-LU" />
       <Directory Id="DIR_lo_LA" Name="lo-LA" />
       <Directory Id="DIR_lt_LT" Name="lt-LT" />
       <Directory Id="DIR_lv_LV" Name="lv-LV" />
-      <Directory Id="DIR_mi_NZ" Name="mi-NZ" />
       <Directory Id="DIR_Microsoft_UI_Xaml" Name="Microsoft.UI.Xaml" />
+      <Directory Id="DIR_mi_NZ" Name="mi-NZ" />
       <Directory Id="DIR_mk_MK" Name="mk-MK" />
       <Directory Id="DIR_ml_IN" Name="ml-IN" />
       <Directory Id="DIR_mr_IN" Name="mr-IN" />
@@ -754,8 +1586,8 @@
       <Directory Id="DIR_pt_PT" Name="pt-PT" />
       <Directory Id="DIR_quz_PE" Name="quz-PE" />
       <Directory Id="DIR_ro_RO" Name="ro-RO" />
-      <Directory Id="DIR_ru_RU" Name="ru-RU" />
       <Directory Id="DIR_rules" Name="rules" />
+      <Directory Id="DIR_ru_RU" Name="ru-RU" />
       <Directory Id="DIR_sk_SK" Name="sk-SK" />
       <Directory Id="DIR_sl_SI" Name="sl-SI" />
       <Directory Id="DIR_sq_AL" Name="sq-AL" />
