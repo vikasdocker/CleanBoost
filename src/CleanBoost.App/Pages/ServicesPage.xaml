@@ -35,7 +35,7 @@
         <TextBlock x:Name="AdminNote"
                    Grid.Row="2"
                    Style="{ThemeResource CaptionTextBlockStyle}"
-                   Foreground="{ThemeResource TextFillColorCautionBrush}"
+                   Foreground="{ThemeResource SystemFillColorCautionBrush}"
                    Text="Changes need administrator mode — use the banner button above."
                    Visibility="{x:Bind IsElevated, Mode=OneTime, Converter={StaticResource InvBoolToVis}}" />
 

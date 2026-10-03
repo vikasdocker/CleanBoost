@@ -78,9 +78,7 @@
                     Padding="8,2"
                     Background="Transparent"
                     BorderThickness="0"
-                    Click="AboutButton_Click"
-                    Style="{ThemeResource TextButtonStyle}">
-                            </Button>
+                    Click="AboutButton_Click" />
         </Grid>
     </Grid>
 
