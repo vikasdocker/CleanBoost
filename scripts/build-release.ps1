@@ -60,7 +60,15 @@ if (-not $SkipTests) {
     if ($LASTEXITCODE -ne 0) { throw "tests failed" }
 }
 
-Step "2/8 publish self-contained x64"
+Step "2/8 icons"
+# Must run before publish: CleanBoost.App.csproj sets <ApplicationIcon>, so the
+# icon is a compile-time input. Publishing first compiled the exe with whatever
+# icon happened to be on disk, which is how a blank icon shipped in 0.3.0.
+powershell -ExecutionPolicy Bypass -File (Join-Path $root "tools/generate-icons.ps1") -OutDir $assets
+if ($LASTEXITCODE -ne 0) { throw "icon generation failed" }
+if (-not (Test-Path (Join-Path $assets "CleanBoost.ico"))) { throw "CleanBoost.ico was not generated" }
+
+Step "3/8 publish self-contained x64"
 if (Test-Path $pub) { Remove-Item -Recurse -Force $pub }
 dotnet publish $proj -c Release -r win-x64 --self-contained `
     -p:PublishSingleFile=false -o $pub --nologo -v m
@@ -68,10 +76,6 @@ if ($LASTEXITCODE -ne 0) { throw "publish failed" }
 $exeVer = (Get-Item (Join-Path $pub "CleanBoost.exe")).VersionInfo.FileVersion
 if ($exeVer -ne "$ver.0") { throw "published exe is $exeVer, expected $ver.0" }
 Write-Host "published exe version $exeVer"
-
-Step "3/8 icons"
-powershell -ExecutionPolicy Bypass -File (Join-Path $root "tools/generate-icons.ps1") -OutDir $assets
-if ($LASTEXITCODE -ne 0) { throw "icon generation failed" }
 
 Step "4/8 msix layout"
 $keep = Join-Path $env:TEMP "cb-layout-keep"

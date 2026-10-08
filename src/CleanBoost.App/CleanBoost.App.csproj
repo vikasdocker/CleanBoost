@@ -26,6 +26,23 @@
     <UseRidGraph>true</UseRidGraph>
   </PropertyGroup>
 
+  <!--
+    Embeds CleanBoost.ico as the exe's icon resource. Without this the exe carries
+    no icon at all and Windows shows a blank/generic icon in Programs and Features,
+    Explorer, the taskbar and Task Manager. It must be a real multi-frame .ico,
+    because a PNG cannot be used as a Windows application icon.
+
+    Regenerate with:
+      powershell -File tools/generate-icons.ps1 -OutDir packaging/assets
+  -->
+  <PropertyGroup>
+    <ApplicationIcon>$(MSBuildThisFileDirectory)..\..\packaging\assets\CleanBoost.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\packaging\assets\CleanBoost.ico" Link="Assets\CleanBoost.ico" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260804001" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.9169" />
