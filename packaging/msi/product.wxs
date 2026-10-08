@@ -3,7 +3,7 @@
   <Package
       Name="CleanBoost"
       Manufacturer="JS BlueFlutex"
-      Version="0.2.0"
+      Version="0.3.0"
       UpgradeCode="8318b96a-85f5-4bcc-884d-a7252985c17b"
       Language="1033"
       Scope="perMachine"
