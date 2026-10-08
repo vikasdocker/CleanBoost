@@ -5,7 +5,7 @@ All notable changes to CleanBoost. Dates are release dates.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.3.1] - 2026-10-08
 
 ### Fixed
 - **The application had no icon at all.** The MSI-installed app showed a blank
@@ -96,6 +96,7 @@ and no more tab-switch resets.
 - Consent-gated elevation.
 - WINAPP2 community rules.
 
+[0.3.1]: https://github.com/vikasdocker/CleanBoost/releases/tag/v0.3.1
 [0.3.0]: https://github.com/vikasdocker/CleanBoost/releases/tag/v0.3.0
 [0.2.0]: https://github.com/vikasdocker/CleanBoost/releases/tag/v0.2.0
 [0.1.0]: https://github.com/vikasdocker/CleanBoost/releases/tag/v0.1.0
