@@ -5,6 +5,27 @@ All notable changes to CleanBoost. Dates are release dates.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- **The application had no icon at all.** The MSI-installed app showed a blank
+  icon in Programs and Features. Three separate causes: `CleanBoost.exe` carried
+  zero icon resources (`ExtractIconExW` returned 0, against 4 for `notepad.exe`),
+  no `.ico` was ever generated because `tools/generate-icons.ps1` only emitted
+  PNGs and a PNG cannot be a Windows application icon, and the MSI shortcut set
+  no `Icon` so it had no embedded icon to fall back to.
+- **The release pipeline shipped it.** `build-release.ps1` published at step 2 and
+  generated icons at step 3, but `ApplicationIcon` is a compile-time input — so
+  the exe was compiled before the icon existed. Icon generation now runs first and
+  asserts the `.ico` was produced.
+
+### Added
+- `packaging/assets/CleanBoost.ico`, a multi-frame icon (16/24/32/48/64/128/256)
+  assembled without any new build dependency. Small frames use a single "C"
+  because "CB" is unreadable at 16px; the wordmark starts at 32px.
+- `ApplicationIcon` in `CleanBoost.App.csproj`, so the icon is embedded in the
+  exe and the MSI shortcut inherits it.
+
 ## [0.3.0] - 2026-10-08
 
 Live cleanup progress, a Turbo button that does what it says, select/delete-all,
