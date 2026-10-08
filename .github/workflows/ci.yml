@@ -40,28 +40,45 @@ jobs:
       - name: Test (Windows-only elevation checks)
         run: dotnet test tests/CleanBoost.Tests/CleanBoost.Tests.csproj -c Release -p:RunWindowsTests=true --nologo -v q
 
-      - name: Build app (Release, win-x64)
-        run: dotnet build src/CleanBoost.App/CleanBoost.App.csproj -c Release -r win-x64 --nologo -v q
-
-      - name: Warn on new warnings
-        run: |
-          dotnet build src/CleanBoost.App/CleanBoost.App.csproj -c Release -r win-x64 `
-            -p:TreatWarningsAsErrors=false -warnaserror /p:WarningLevel=9999 `
-            --nologo -v q 2>&1 | Tee-Object -Variable out
-          if ($out -match ': warning ') { Write-Error "build produced warnings"; exit 1 }
-        continue-on-error: true
+      # Warnings are an error. The project is currently warning-free, so this is a
+      # real gate rather than a suggestion.
+      - name: Build app (Release, win-x64, warnings as errors)
+        run: dotnet build src/CleanBoost.App/CleanBoost.App.csproj -c Release -r win-x64 --nologo -v q -warnaserror
 
   rules:
     name: winapp2.ini is unmodified
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      # rules/winapp2.ini is CC-BY-SA-4.0 and must be redistributed unmodified.
-      # See THIRD-PARTY-NOTICES.md. This fails the build if anyone edits it.
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # rules/winapp2.ini is third-party CC-BY-SA-4.0 and must be redistributed
+      # unmodified -- see THIRD-PARTY-NOTICES.md.
+      #
+      # This compares the *stored blob sha* against a pinned value. The obvious
+      # alternative, `git diff HEAD`, is useless: in CI the working tree and HEAD
+      # are the same commit, so it can never detect an edit that was already
+      # committed. `git hash-object` is also wrong -- it re-applies CRLF filtering
+      # and so disagrees with the stored sha on a Windows checkout. `git ls-tree`
+      # reports the sha exactly as recorded in the commit.
+      #
+      # To intentionally refresh winapp2.ini, bump WINAPP2_BLOB to the output of:
+      #   git ls-tree HEAD -- rules/winapp2.ini | cut -d' ' -f3
       - name: Verify bundled rules are untouched
+        env:
+          WINAPP2_BLOB: 53f4376ae3f26cc4e2abd59a778bac1ba8e0e9e7
         run: |
-          git diff --exit-code HEAD -- rules/winapp2.ini || {
-            echo "::error::rules/winapp2.ini was modified. It is third-party CC-BY-SA-4.0"
-            echo "::error::material and must be redistributed unmodified."
+          actual=$(git ls-tree HEAD -- rules/winapp2.ini | awk '{print $3}')
+          if [ -z "$actual" ]; then
+            echo "::error::rules/winapp2.ini is missing from the repository"
             exit 1
-          }
+          fi
+          if [ "$actual" != "$WINAPP2_BLOB" ]; then
+            echo "::error::rules/winapp2.ini was modified ($actual != $WINAPP2_BLOB)."
+            echo "::error::It is third-party CC-BY-SA-4.0 material and must be"
+            echo "::error::redistributed unmodified. If the upstream database was"
+            echo "::error::intentionally refreshed, bump WINAPP2_BLOB in this file."
+            exit 1
+          fi
+          echo "rules/winapp2.ini unmodified ($actual)"
