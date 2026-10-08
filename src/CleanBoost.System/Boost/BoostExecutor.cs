@@ -26,6 +26,7 @@ public record BoostStepStep(BoostStepKind Kind, string Title, string Result = ""
 
 public static class BoostCatalog
 {
+    /// <summary>Fully safe everyday steps. Always applied, Turbo on or off.</summary>
     public static IReadOnlyList<BoostStep> Light() => new[]
     {
         new BoostStep(BoostStepKind.StartupOrphans,
@@ -42,23 +43,28 @@ public static class BoostCatalog
             "Disable Delivery Optimization",
             "Stops using your bandwidth to seed Windows updates to peers.",
             RiskLevel.Safe, RequiresElevation: true, IsTurboOnly: false),
+    };
 
+    /// <summary>
+    /// The extra work Turbo adds behind its consent. These are the steps that can
+    /// be noticed — emptying the Recycle Bin is the only irreversible one, which
+    /// is exactly why it is gated behind Turbo rather than running by default.
+    /// </summary>
+    public static IReadOnlyList<BoostStep> Turbo() => new[]
+    {
         new BoostStep(BoostStepKind.EmptyRecycleBin,
             "Empty Recycle Bin",
             "Permanently deletes only what is already in the Recycle Bin — all other cleaning stays reversible.",
-            RiskLevel.Caution, RequiresElevation: false, IsTurboOnly: false),
+            RiskLevel.Caution, RequiresElevation: false, IsTurboOnly: true),
 
         new BoostStep(BoostStepKind.FlushDns,
             "Flush DNS cache",
             "Clears cached DNS lookups so the next resolution is fetched fresh.",
-            RiskLevel.Safe, RequiresElevation: false, IsTurboOnly: false),
-    };
+            RiskLevel.Safe, RequiresElevation: false, IsTurboOnly: true),
 
-    public static IReadOnlyList<BoostStep> Turbo() => new[]
-    {
         new BoostStep(BoostStepKind.FlushMemory,
             "Flush unused memory",
-            "Trims working sets so the OS frees RAM when memory pressure rises.",
+            "Trims working sets so the OS frees RAM when memory pressure rises. You may notice a brief pause while apps page memory back in under load.",
             RiskLevel.Caution, RequiresElevation: false, IsTurboOnly: true),
     };
 }
@@ -78,36 +84,72 @@ public sealed class BoostExecutor
         foreach (var step in steps)
         {
             ct.ThrowIfCancellationRequested();
-            var stepTitle = step.Title;
-            progress?.Report(new BoostStepStep(step.Kind, stepTitle, "running"));
-            // Steps touch the registry, WinRT package manager and system
-            // processes — run them off the UI thread.
-            var result = await Task.Run(() => ExecuteAsync(step, ct), ct).ConfigureAwait(false);
+            progress?.Report(new BoostStepStep(step.Kind, step.Title, "running"));
+
+            var result = await ExecuteAsync(step, ct).ConfigureAwait(false);
             results.Add(result);
-            progress?.Report(result.Step with { Result = result.Succeeded ? "done" : "skipped" });
+            progress?.Report(new BoostStepStep(step.Kind, step.Title, result.Succeeded ? "done" : "skipped"));
         }
         return results;
     }
 
-    private static Task<BoostStepResult> ExecuteAsync(BoostStep step, CancellationToken ct)
+    private static async Task<BoostStepResult> ExecuteAsync(BoostStep step, CancellationToken ct)
     {
         try
         {
             return step.Kind switch
             {
-                BoostStepKind.StartupOrphans => Task.FromResult(RemoveStartupOrphans()),
-                BoostStepKind.DebloatCurated => Task.FromResult(RemoveBloat()),
-                BoostStepKind.DisableDoSv2 => Task.FromResult(DisableDoSv2()),
-                BoostStepKind.EmptyRecycleBin => Task.FromResult(EmptyRecycleBinNow()),
-                BoostStepKind.FlushDns => Task.FromResult(FlushDnsNow()),
-                BoostStepKind.FlushMemory => Task.FromResult(FlushMemory()),
-                _ => Task.FromResult(new BoostStepResult(ToStep(step), false, "unknown step")),
+                BoostStepKind.StartupOrphans => await RunOffThread(RemoveStartupOrphans, ct).ConfigureAwait(false),
+                BoostStepKind.DebloatCurated => await RemoveBloatAsync(ct).ConfigureAwait(false),
+                BoostStepKind.DisableDoSv2 => await RunOffThread(DisableDoSv2, ct).ConfigureAwait(false),
+                BoostStepKind.EmptyRecycleBin => await RunOffThread(EmptyRecycleBinNow, ct).ConfigureAwait(false),
+                BoostStepKind.FlushDns => await FlushDnsAsync(ct).ConfigureAwait(false),
+                BoostStepKind.FlushMemory => await RunOffThread(FlushMemory, ct).ConfigureAwait(false),
+                _ => new BoostStepResult(ToStep(step), false, "unknown step"),
             };
+        }
+        catch (OperationCanceledException)
+        {
+            throw;
         }
         catch (Exception ex)
         {
-            return Task.FromResult(new BoostStepResult(ToStep(step), false, ex.Message));
+            return new BoostStepResult(ToStep(step), false, ex.Message);
         }
+    }
+
+    /// <summary>Runs a synchronous step (registry writes, shell calls) off the UI thread.</summary>
+    private static Task<BoostStepResult> RunOffThread(Func<BoostStepResult> body, CancellationToken ct)
+        => Task.Run(body, ct);
+
+    private static async Task<BoostStepResult> RemoveBloatAsync(CancellationToken ct)
+    {
+        var packages = await Task.Run(() => Debloat.AppxManager.GetRemovablePackages(), ct).ConfigureAwait(false);
+
+        var removed = 0;
+        var failed = 0;
+        foreach (var app in packages)
+        {
+            ct.ThrowIfCancellationRequested();
+            if (await Debloat.AppxManager.RemoveAsync(app.FullName, ct: ct).ConfigureAwait(false) is null)
+                removed++;
+            else
+                failed++;
+        }
+
+        return new BoostStepResult(
+            new BoostStepStep(BoostStepKind.DebloatCurated, "debloat"),
+            true,
+            failed == 0
+                ? $"{removed} packages removed"
+                : $"{removed} packages removed, {failed} skipped");
+    }
+
+    private static async Task<BoostStepResult> FlushDnsAsync(CancellationToken ct)
+    {
+        var ok = await SystemTweaks.DnsFlusher.FlushAsync(ct).ConfigureAwait(false);
+        return new BoostStepResult(new BoostStepStep(BoostStepKind.FlushDns, "dns"),
+            ok, ok ? "DNS cache flushed" : "could not flush DNS cache");
     }
 
     private static BoostStepResult RemoveStartupOrphans()
@@ -145,18 +187,6 @@ public sealed class BoostExecutor
         return space > 0 ? trimmed[..space] : trimmed;
     }
 
-    private static BoostStepResult RemoveBloat()
-    {
-        var removed = 0;
-        foreach (var app in Debloat.AppxManager.GetRemovablePackages())
-        {
-            if (Debloat.AppxManager.Remove(app.FullName) is null)
-                removed++;
-        }
-        return new BoostStepResult(new BoostStepStep(BoostStepKind.DebloatCurated, "debloat"),
-            true, $"{removed} packages removed");
-    }
-
     private static BoostStepResult DisableDoSv2()
     {
         var policyKey = Microsoft.Win32.Registry.LocalMachine
@@ -182,13 +212,6 @@ public sealed class BoostExecutor
         var ok = Recycle.RecycleBin.EmptyAll();
         return new BoostStepResult(new BoostStepStep(BoostStepKind.EmptyRecycleBin, "recycle-bin"),
             ok, ok ? "Recycle Bin emptied" : "could not empty the Recycle Bin");
-    }
-
-    private static BoostStepResult FlushDnsNow()
-    {
-        var ok = SystemTweaks.DnsFlusher.Flush();
-        return new BoostStepResult(new BoostStepStep(BoostStepKind.FlushDns, "dns"),
-            ok, ok ? "DNS cache flushed" : "could not flush DNS cache");
     }
 
     private static BoostStepStep ToStep(BoostStep step) => new(step.Kind, step.Title);

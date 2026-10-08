@@ -19,6 +19,21 @@ public interface IDeleter
     string? Delete(string fullPath);
 }
 
+/// <summary>
+/// Optional capability for backends that can remove many files in one backend call.
+/// The Windows Recycle Bin uses this to amortise <c>SHFileOperationW</c>, which is
+/// the difference between a clean that feels instant and one that looks hung.
+/// Callers must still validate every path individually before batching.
+/// </summary>
+public interface IBatchDeleter : IDeleter
+{
+    /// <summary>
+    /// Deletes every path in <paramref name="fullPaths"/>. The returned list is
+    /// index-aligned with the input: null means deleted, otherwise a failure reason.
+    /// </summary>
+    IReadOnlyList<string?> DeleteBatch(IReadOnlyList<string> fullPaths);
+}
+
 /// <summary>Permanent deletion used on non-Windows hosts (tests) or explicit "permanent" mode.</summary>
 public sealed class PermanentFileDeleter : IDeleter
 {

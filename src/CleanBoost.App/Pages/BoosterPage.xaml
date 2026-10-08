@@ -5,6 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CleanBoost.App.Pages">
 
+    <Page.Resources>
+        <local:BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Page.Resources>
+
     <Grid Padding="32,20,32,20" RowSpacing="16" MaxWidth="720" HorizontalAlignment="Left">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -12,15 +16,16 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <StackPanel Spacing="4">
             <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Text="Booster" />
             <TextBlock Style="{ThemeResource BodyTextBlockStyle}"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                       Text="Apply a one-click boost. Light is fully safe; Turbo adds a RAM flush." />
+                       TextWrapping="Wrap"
+                       Text="Light does only fully safe work. Turbo adds three extra steps behind an explicit consent — including emptying the Recycle Bin." />
         </StackPanel>
 
         <ToggleSwitch Grid.Row="1" x:Name="TurboSwitch"
@@ -32,33 +37,59 @@
             <TextBlock Style="{ThemeResource BodyTextBlockStyle}"
                        TextWrapping="Wrap"
                        Foreground="{ThemeResource SystemFillColorCautionBrush}"
-                       Text="Turbo flushes unused memory by trimming working sets. It is not dangerous, but you may notice a brief pause while apps page memory back in under load." />
-            <CheckBox x:Name="TurboConsent" Content="I understand, include the RAM flush in Turbo" IsChecked="False" />
+                       Text="Turbo permanently empties the Recycle Bin — that is the one irreversible step in the whole app. It also flushes DNS and trims working sets, which can cause a brief pause while apps page memory back in under load." />
+            <CheckBox x:Name="TurboConsent" Content="I understand — include the Turbo steps" IsChecked="False" />
         </StackPanel>
 
-        <TextBlock Grid.Row="3" Margin="0,12,0,0" Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Steps" />
+        <StackPanel Grid.Row="3" Margin="0,12,0,0" Spacing="8">
+            <TextBlock Style="{ThemeResource BodyStrongTextBlockStyle}" Text="Steps" />
+            <TextBlock x:Name="PlanSummaryText"
+                       Style="{ThemeResource CaptionTextBlockStyle}"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       TextWrapping="Wrap" />
+        </StackPanel>
 
-        <ListView Grid.Row="4" x:Name="StepsList" SelectionMode="None">
+        <ListView Grid.Row="4" x:Name="StepsList" SelectionMode="None" Height="220">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:BoostStepModel">
-                    <StackPanel Spacing="2" Margin="0,6">
-                        <TextBlock Text="{x:Bind Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" />
-                        <TextBlock Text="{x:Bind Description}"
+                    <Grid ColumnSpacing="12" Margin="0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Spacing="2">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="{x:Bind Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                                <TextBlock Text="Turbo"
+                                           Style="{ThemeResource CaptionTextBlockStyle}"
+                                           Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                           Visibility="{x:Bind IsTurboOnly, Mode=OneTime, Converter={StaticResource BoolToVis}}" />
+                            </StackPanel>
+                            <TextBlock Text="{x:Bind Description}"
+                                       Style="{ThemeResource CaptionTextBlockStyle}"
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="{x:Bind StatusText, Mode=OneWay}"
                                    Style="{ThemeResource CaptionTextBlockStyle}"
-                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                   TextWrapping="Wrap" />
-                    </StackPanel>
+                                   VerticalAlignment="Center" />
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel Grid.Row="5" Orientation="Horizontal" Spacing="12" Margin="0,16,0,0">
+        <StackPanel Grid.Row="5" Spacing="8">
+            <InfoBar x:Name="BoostInfo" IsOpen="False" />
+            <TextBlock x:Name="SummaryText"
+                       Style="{ThemeResource BodyTextBlockStyle}"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal" Spacing="12" Margin="0,8,0,0">
             <Button x:Name="RunBoostButton" Style="{ThemeResource AccentButtonStyle}" Content="Apply boost" Click="RunBoostButton_Click" />
+            <Button x:Name="CancelButton" Content="Cancel" Visibility="Collapsed" Click="CancelBoostButton_Click" />
             <ProgressRing x:Name="BoostProgress" IsActive="False" Width="24" Height="24" />
         </StackPanel>
-        <TextBlock Grid.Row="6" x:Name="SummaryText"
-                   Style="{ThemeResource BodyTextBlockStyle}"
-                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                   TextWrapping="Wrap" Margin="0,8,0,0" />
     </Grid>
 </Page>

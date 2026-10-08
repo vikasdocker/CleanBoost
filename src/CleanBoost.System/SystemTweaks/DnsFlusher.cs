@@ -5,10 +5,11 @@ namespace CleanBoost.System.SystemTweaks;
 /// <summary>Non-destructive system maintenance invoked by boost steps.</summary>
 public static class DnsFlusher
 {
-    public static bool Flush()
+    public static async Task<bool> FlushAsync(CancellationToken ct = default)
     {
         if (!OperatingSystem.IsWindows())
             return false;
+
         try
         {
             using var p = Process.Start(new ProcessStartInfo
@@ -18,8 +19,24 @@ public static class DnsFlusher
                 CreateNoWindow = true,
                 UseShellExecute = false,
             });
-            p?.WaitForExit(15_000);
-            return p is not null && p.ExitCode == 0;
+            if (p is null)
+                return false;
+
+            // Awaited rather than WaitForExit, so a boost run can be cancelled
+            // instead of parking a thread-pool thread for the full timeout.
+            using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
+            timeout.CancelAfter(15_000);
+
+            try
+            {
+                await p.WaitForExitAsync(timeout.Token).ConfigureAwait(false);
+            }
+            catch (OperationCanceledException)
+            {
+                return false;
+            }
+
+            return p.ExitCode == 0;
         }
         catch
         {

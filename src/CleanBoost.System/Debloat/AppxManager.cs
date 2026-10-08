@@ -56,40 +56,52 @@ public static class AppxManager
         return result;
     }
 
-    public static string? Remove(string packageFullName)
+    /// <summary>Removes an appx package, genuinely awaiting the WinRT operation.</summary>
+    /// <param name="packageFullName">Full package name to remove.</param>
+    /// <param name="timeout">Hard ceiling on how long a single removal may take.</param>
+    /// <param name="ct">Cancellation, honoured both before and during the wait.</param>
+    public static async Task<string?> RemoveAsync(string packageFullName,
+                                                 TimeSpan? timeout = null,
+                                                 CancellationToken ct = default)
     {
         if (!OperatingSystem.IsWindows())
             return "not supported on this host";
 
+        ct.ThrowIfCancellationRequested();
+
+        var manager = new Windows.Management.Deployment.PackageManager();
+        var op = manager.RemovePackageAsync(packageFullName);
+        if (op is null)
+            return "remove operation failed";
+
+        // A real await rather than a Thread.Sleep poll loop. The old loop blocked a
+        // thread-pool thread for up to 60s per package, so "Applying boost" could sit
+        // frozen for half an hour with no way to escape it.
+        using var deadline = CancellationTokenSource.CreateLinkedTokenSource(ct);
+        deadline.CancelAfter(timeout ?? TimeSpan.FromSeconds(60));
+
         try
         {
-            var manager = new Windows.Management.Deployment.PackageManager();
-            var op = manager.RemovePackageAsync(packageFullName);
-            if (op is null)
-                return "remove operation failed";
-
-            var deadline = DateTime.UtcNow + TimeSpan.FromSeconds(60);
-            while (op.Status == Windows.Foundation.AsyncStatus.Started)
-            {
-                if (DateTime.UtcNow > deadline)
-                {
-                    op.Cancel();
-                    op.Close();
-                    return "remove timed out";
-                }
-                global::System.Threading.Thread.Sleep(50);
-            }
-
-            var status = op.Status;
-            var error = status == Windows.Foundation.AsyncStatus.Error
-                ? op.ErrorCode?.Message ?? "remove failed"
-                : null;
-            op.Close();
-            return status == Windows.Foundation.AsyncStatus.Completed ? null : error;
+            await op.AsTask(deadline.Token).ConfigureAwait(false);
+            return null;
+        }
+        catch (OperationCanceledException) when (!ct.IsCancellationRequested)
+        {
+            try { op.Cancel(); } catch { /* best effort */ }
+            return "remove timed out";
+        }
+        catch (OperationCanceledException)
+        {
+            try { op.Cancel(); } catch { /* best effort */ }
+            throw;
         }
         catch (Exception ex)
         {
             return ex.Message;
+        }
+        finally
+        {
+            try { op.Close(); } catch { /* best effort */ }
         }
     }
 }

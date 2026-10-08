@@ -10,6 +10,17 @@ namespace CleanBoost.System.Processes;
 /// </summary>
 public static class ProcessTrimmer
 {
+    /// <summary>
+    /// Processes that must never be trimmed. Trimming is harmless in principle but
+    /// these own session and security state that the OS does not expect to lose.
+    /// </summary>
+    private static readonly HashSet<string> Critical = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "system", "registry", "smss", "csrss", "wininit", "services", "lsass",
+        "lsm", "svchost", "winlogon", "dwm", "spoolsv", "win32k", "fontdrvhost",
+        "sihost", "ctfmon", "conhost", "logonui", "winframe",
+    };
+
     public static int TrimWorkingSet(IEnumerable<int> pids)
     {
         if (!OperatingSystem.IsWindows())
@@ -18,6 +29,9 @@ public static class ProcessTrimmer
         var trimmed = 0;
         foreach (var pid in pids.Distinct())
         {
+            if (pid is 0 or 4)
+                continue;
+
             var handle = NativeMethods.OpenProcess(
                 NativeMethods.PROCESS_QUERY_INFORMATION | NativeMethods.PROCESS_SET_QUOTA,
                 bInheritHandle: false, (uint)pid);
@@ -39,9 +53,29 @@ public static class ProcessTrimmer
 
     public static int TrimAllUsers()
     {
-        var pids = Process.GetProcesses()
-            .Where(p => p.Id is not 0 and not 4)
-            .Select(p => p.Id);
-        return TrimWorkingSet(pids);
+        if (!OperatingSystem.IsWindows())
+            return 0;
+
+        var ids = new List<int>(256);
+        // Process objects hold an OS handle each. Disposing them matters: without
+        // it a single Turbo pass leaked one handle per process on the machine.
+        foreach (var process in Process.GetProcesses())
+        {
+            using (process)
+            {
+                try
+                {
+                    if (Critical.Contains(process.ProcessName))
+                        continue;
+                    ids.Add(process.Id);
+                }
+                catch
+                {
+                    // process exited between enumeration and inspection
+                }
+            }
+        }
+
+        return TrimWorkingSet(ids);
     }
 }

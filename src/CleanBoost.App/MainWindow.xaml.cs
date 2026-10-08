@@ -9,6 +9,13 @@ public sealed partial class MainWindow : Window
 {
     private readonly AppWindowConfigurer _configurer;
 
+    /// <summary>
+    /// Pages are constructed once and reused. Without this the frame rebuilds a
+    /// page on every tab click, which silently threw away the selection, the scan
+    /// results and any in-flight cleanup the user had started.
+    /// </summary>
+    private readonly Dictionary<Type, Page> _pages = new();
+
     public MainWindow()
     {
         InitializeComponent();
@@ -19,8 +26,8 @@ public sealed partial class MainWindow : Window
         _configurer.SetTitleBar(AppTitleBar);
 
         ConfigureAdminBanner();
-        ContentFrame.Navigate(typeof(CleanerPage));
         Nav.SelectedItem = Nav.MenuItems[0];
+        ShowPage(typeof(CleanerPage));
     }
 
     public string OwnerLine { get; } =
@@ -75,14 +82,32 @@ public sealed partial class MainWindow : Window
     {
         if (args.SelectedItem is NavigationViewItem item && item.Tag is string tag)
         {
-            var type = tag switch
+            ShowPage(tag switch
             {
                 "Booster" => typeof(BoosterPage),
                 "History" => typeof(HistoryPage),
                 "Services" => typeof(ServicesPage),
                 _ => typeof(CleanerPage),
-            };
-            ContentFrame.Navigate(type);
+            });
         }
+    }
+
+    /// <summary>
+    /// Swaps in a cached page instance. Assigning <see cref="Frame.Content"/>
+    /// directly (rather than calling Navigate) keeps the instance — and therefore
+    /// its in-flight work — alive across tab switches.
+    /// </summary>
+    private void ShowPage(Type type)
+    {
+        if (ContentFrame.Content is Page current && current.GetType() == type)
+            return;
+
+        if (!_pages.TryGetValue(type, out var page))
+        {
+            page = (Page)Activator.CreateInstance(type)!;
+            _pages[type] = page;
+        }
+
+        ContentFrame.Content = page;
     }
 }

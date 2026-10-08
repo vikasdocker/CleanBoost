@@ -19,8 +19,9 @@ that does two jobs:
    `winapp2.ini`.
 2. **Booster** — one-click boost: Light mode (remove dead startup entries,
    curated debloat, disable Delivery Optimization) and Turbo mode (Recycle Bin
-   empty, DNS flush, flush RAM). Never touches the registry for cleanliness;
-   only writes registry settings the user explicitly chose.
+   empty, DNS flush, trim RAM, all behind an explicit consent checkbox).
+   Never touches the registry for cleanliness; only writes registry settings the
+   user explicitly chose.
 
 Constraints that are NOT negotiable (safety model):
 - Everything goes to the **Recycle Bin first**. Nothing is permanent.
@@ -44,7 +45,7 @@ Constraints that are NOT negotiable (safety model):
 | Packaging | MSIX (Store) + standalone MSI (WiX) + portable zip (x64) |
 | Deletion | Recycle Bin (`SHEmptyRecycleBinW` for emptying; per-file delete via `SafeDeleter`) |
 | Community rules | `winapp2.ini` parsed by `WinappParser`; registry-only & wildcard-root entries dropped; risk = WaCaution/ConfirmFirst |
-| Boost modes | Light (safe) + Turbo (RAM flush behind consent, off by default) |
+| Boost modes | Light (safe: startup orphans, curated debloat, disable Delivery Optimization) + Turbo (behind an explicit consent checkbox: empty Recycle Bin, flush DNS, trim RAM) |
 | Boosting steps | Startup orphans, debloat curated, disable Delivery Optimization, empty Recycle Bin, flush DNS, flush RAM |
 | Safety | `PathGuard` with protected roots (Windows, ProgramFiles, ProgramData, System32, WinSxS, DriverStore, Packages) + carve-outs (`Windows\Temp`, SoftwareDistribution\*, Prefetch, Minidump, MEMORY.DMP, WER) |
 | Deletion types | Only `FileKey`-based removals; symbolic links refused; empty-dir pruning bounded |
@@ -243,11 +244,95 @@ Packaging — all three deliverables exist for 0.2.0 (see §6 for what is left):
    flips to "running elevated".
 2. Cleaner: scan (Safe categories only) → sizes appear → clean → items are in
    Recycle Bin → audit log entry present.
-3. Enable "Community rules" → winapp2 categories load → scan covers them.
-4. Booster: Light boost applies the 4 light steps; Turbo (after consent)
+3. Enable "Community rules" → winapp2 categories load → scan covers them:
+4. Booster: Light boost applies the 3 light steps; Turbo (after consent)
    empties Recycle Bin + flushes DNS + trims RAM.
 5. Services page: toggling a service autostart requires admin and writes.
 6. Uninstall cleanly removes shortcuts + app (MSI) / package (MSIX).
+
+---
+
+## 6a. Cleanup pass — live progress, Turbo apply, stability (done)
+
+A dedicated pass fixed four user-reported problems. All of it is verified by
+46 green tests plus a scripted UI smoke test that drives the real app.
+
+### Live cleanup feedback
+- `SafeDeleter.Delete` takes an `IProgress<DeleteProgress>` and now validates
+  every item **individually first**, then dispatches survivors to the backend in
+  chunks. Safety decisions are never batched.
+- `RecycleBinDeleter` implements the new `IBatchDeleter`: **64 paths per
+  `SHFileOperationW` call** instead of one call per file. This is the single
+  biggest reason a large clean stopped looking like a hang.
+- Cleaner shows a **determinate** progress bar plus a live per-file list
+  (path · category · outcome), newest on top, capped at 300 rows with exact
+  totals kept in counters above it.
+- `App/Services/ThrottledProgress` keeps the live list cheap: reports are
+  parked on a concurrent queue and drained on a 100ms `DispatcherQueueTimer`
+  tick. A naive `Progress<T>` would post one UI callback per file and become the
+  freeze we were removing. Its counters are fed on the reporting thread so they
+  stay exact even if rows are shed; `Dispose` flushes so fast runs still show.
+- **Cancel** button wired to a `CancellationTokenSource`; scan and clean are
+  separately cancellable.
+
+### Select all / delete all
+- `Select all`, `Clear selection` and `Clean all found` buttons added.
+- `Select all` ticks only categories that actually have findings; it does not
+  select empty rows.
+- `Clean all found` runs the same consent gates as `Clean selected`.
+- `Clean selected` now disables when the selection has nothing to clean, and
+  the warning text distinguishes "nothing selected" from "nothing to clean".
+
+### Turbo apply
+- The button relabels to **"Apply Turbo"** when Turbo is on.
+- `BoostCatalog.Turbo()` now owns the three extra steps (Recycle Bin empty, DNS
+  flush, RAM trim). **Behaviour change:** Light went from 5 steps to 3 — empty
+  Recycle Bin and DNS flush moved behind the Turbo consent, which is where
+  ROADMAP §2/§4 always said they belonged.
+- The step preview and the executor now use the **same** consent gate. They used
+  to disagree, so Turbo listed "Flush unused memory" as pending and then
+  silently skipped it.
+- Turbo steps carry a `Turbo` badge; every step shows live Pending/Running/Done/
+  Failed from `BoostExecutor`'s existing `IProgress<BoostStepStep>` hook, which
+  the page had never been passing.
+- Added a Cancel button and an elevation warning when a queued step needs admin.
+
+### Stability / hangs
+- **Pages are cached.** `MainWindow` builds each page once and assigns
+  `ContentFrame.Content`; `IsNavigationStackEnabled=False`. Previously every tab
+  click constructed a new page, discarding the selection, the scan results and
+  any in-flight cleanup. Pages therefore load on `Loaded`, not `OnNavigatedTo`.
+- `HistoryPage` used to deserialise the **entire** audit log on the UI thread.
+  Added `AuditLog.ReadTail`, which seeks to the end of the file and parses only
+  the last N records, loaded off-thread with a Refresh button. Added log
+  rotation past 24MB so the log cannot grow without bound.
+- `AppxManager.Remove` busy-waited `Thread.Sleep(50)` for up to **60s per
+  package** (~30min worst case) — replaced with a real `await` on the WinRT
+  operation plus a real timeout. Renamed to `RemoveAsync`.
+- `DnsFlusher.Flush` → `FlushAsync` (`WaitForExitAsync`), so a boost run is
+  cancellable instead of parking a pool thread.
+- `ProcessTrimmer.TrimAllUsers` leaked a handle per process (never disposed)
+  and trimmed session-critical processes; now disposes and skips a deny-list.
+- `CleanerPage` no longer fires an un-awaited `async void` re-scan after a clean.
+- `ServicesPage.IsElevated` was never assigned, so the "needs administrator"
+  warning showed even when elevated.
+
+### Safety bug found and fixed
+`CleanerPage` never passed `pruneEmptyRoots`, so `PruneEmptyDirectories`
+ascended **unbounded** — past the category target, all the way up the tree. The
+`CleanTarget.RemoveSelf` flag existed but was read by nothing. The deleter now
+refuses to prune at all unless given roots, and the Cleaner builds that set from
+the chosen categories' `RemoveSelf` targets. Three regression tests pin it.
+
+### Verified
+- `dotnet test`: **46/46** green (47/47 with `-p:RunWindowsTests=true`).
+- `dotnet build CleanBoost.App -c Release -r win-x64`: 0 errors, 0 warnings.
+- Scripted UI smoke test: app launches; scan finds ~41k items; Select all
+  ticks 11 populated categories; Clean all found raises the ConfirmFirst gate;
+  mid-clean progress bar, live file list, Cancel and byte counters all render;
+  **switching to Booster/History and back leaves the running cleanup and its
+  progress intact**; History renders 500 entries instantly off a 16MB log.
+- No new `{ThemeResource}` keys introduced (CRASHFIX.md trap).
 
 ---
 
@@ -326,10 +411,11 @@ Packaging — all three deliverables exist for 0.2.0 (see §6 for what is left):
 
 Current state (0.2.0) — all verified:
 
-- [x] `dotnet test`: **30/30** green.
-- [ ] `dotnet test -p:RunWindowsTests=true` on Windows: 31/31 green
-      (2 elevation tests are opt-in and were not re-run this pass).
+- [x] `dotnet test`: **46/46** green.
+- [x] `dotnet test -p:RunWindowsTests=true` on Windows: **47/47** green.
 - [x] `dotnet build CleanBoost.App -c Release -r win-x64` → 0 errors/0 warnings.
+- [x] Cleaner/Booster/History pages smoke-tested on a real Windows host via a
+      scripted UI driver (see §6a).
 - [x] `dist/CleanBoost-x64-0.2.0.msi` (67.6MB) builds; administrative install
       extracts 506 files incl. `rules\winapp2.ini`. **Still needs a real
       elevated install/launch/uninstall (P4).**

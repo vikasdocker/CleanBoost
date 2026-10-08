@@ -3,7 +3,6 @@ using CleanBoost.System.Elevation;
 using CleanBoost.System.Startup;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace CleanBoost.App.Pages;
 
@@ -42,21 +41,18 @@ public sealed class ServiceModel
 public sealed partial class ServicesPage : Page
 {
     public bool IsElevated { get; private set; }
-    private bool IsInitialized;
     private readonly ObservableCollection<ServiceModel> _all = new();
 
     public ServicesPage()
     {
         InitializeComponent();
-    }
 
-    protected override void OnNavigatedTo(NavigationEventArgs e)
-    {
-        base.OnNavigatedTo(e);
-        if (IsInitialized)
-            return;
-        IsInitialized = true;
-        _ = LoadServicesAsync(showBusy: true);
+        // The shell swaps cached pages in via Frame.Content, so OnNavigatedTo never
+        // fires — load on the first Loaded instead. Also bind the elevation flag
+        // while we are here: it was never assigned, so the "needs administrator"
+        // warning used to show even when already elevated.
+        IsElevated = ElevationHelper.IsElevated();
+        Loaded += async (_, _) => await LoadServicesAsync(showBusy: true);
     }
 
     private async Task LoadServicesAsync(bool showBusy)
