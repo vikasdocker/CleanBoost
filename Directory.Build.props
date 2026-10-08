@@ -7,6 +7,6 @@
     <Version>0.3.0</Version>
     <Authors>CleanBoost</Authors>
     <Product>CleanBoost</Product>
-    <RepositoryUrl>https://github.com/example/cleanboost</RepositoryUrl>
+    <RepositoryUrl>https://github.com/vikasdocker/CleanBoost</RepositoryUrl>
   </PropertyGroup>
 </Project>

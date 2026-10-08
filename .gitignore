@@ -22,3 +22,6 @@ publish/
 packaging/msix/layout/*
 !packaging/msix/layout/AppxManifest.xml
 !packaging/msix/layout/Assets/
+
+# Auto-generated commit dump, superseded by the hand-written CHANGELOG.md.
+CHANGELOG_INTERNAL.md

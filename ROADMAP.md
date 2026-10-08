@@ -227,17 +227,40 @@ Packaging — all three deliverables exist for 0.2.0 (see §6 for what is left):
   `build-release.ps1 -Upload` creates the tag if missing.
 
 ### P3 — Polish
-- Add `Asset Files` + `App icon` to the .csproj so the MSIX `AppxManifest`
-  references the right logo names (currently uses `Assets\StoreLogo.png`).
-- `Directory.Build.props` still carries `Authors`/`Product`/`RepositoryUrl`
-  defaults (`RepositoryUrl` is a placeholder `example/cleanboost`); the App
-  csproj overrides Version/Company/Authors itself. Worth collapsing to one
-  source of truth.
-- Add LICENSE attribution for `rules/winapp2.ini` (CC-BY-SA) — MIT LICENSE
-  exists but does not mention it.
+- ~~Add `Asset Files` + `App icon` to the .csproj so the MSIX `AppxManifest`
+  references the right logo names (currently uses `Assets\StoreLogo.png`).~~
+  Still open — the MSIX still builds from the generated layout, not the csproj.
+- ~~`Directory.Build.props` still carries `Authors`/`Product`/`RepositoryUrl`
+  defaults (`RepositoryUrl` is a placeholder `example/cleanboost`)~~ — DONE.
+  `RepositoryUrl` is now `https://github.com/vikasdocker/CleanBoost` and is stamped
+  into the assembly. `Authors`/`Product` are still duplicated between
+  `Directory.Build.props` and the App csproj; harmless but redundant.
+- ~~Add LICENSE attribution for `rules/winapp2.ini` (CC-BY-SA)~~ — DONE.
+  `THIRD-PARTY-NOTICES.md` added and `LICENSE` now states explicitly that the MIT
+  terms do not cover that file. CI has a job that fails if `winapp2.ini` is edited.
 - Signing keys: `.gitignore` now blocks `*.pfx`, but `packaging/CleanBoostDev.pfx`
   is **already in history** at commit `f2ed5c5`. It is password-protected; treat
   it as burned.
+- ~~GitHub Actions CI~~ — DONE. `.github/workflows/ci.yml` runs restore, both test
+  passes (including the Windows-only elevation checks), and a Release build of the
+  app on `windows-latest`, plus a job that guards the third-party rules file.
+
+### P3 — Documentation (done)
+- `README.md` — hero screenshot, per-tab screenshots, safety model, install,
+  build-from-source, architecture, and an honest **Known limitations** section
+  (Explorer thumbnail/icon caches are unremovable; scan memory scales with match
+  count; audit log is per-file; MSIX uses a self-signed dev cert).
+- `THIRD-PARTY-NOTICES.md` — winapp2.ini CC-BY-SA-4.0 attribution plus the
+  runtime/build dependency inventory.
+- `CHANGELOG.md` — real Keep-a-Changelog entries for 0.1.0 / 0.2.0 / 0.3.0.
+- `.editorconfig` — C# / XAML / Markdown conventions.
+- Issue templates — bug report (asks for the audit-journal lines, the single most
+  useful diagnostic), feature request, and a contact-links config that points at
+  the safety model and known limitations.
+- `tools/capture-screenshots.ps1` — regenerates `docs/screenshots/` by driving the
+  real app. Uses `PrintWindow` so other windows cannot bleed into a capture, and
+  pixel-probes the category list to find a populated row instead of hardcoding
+  positions. Seeding a temp junk folder makes the live-capture deterministic.
 
 ### P4 — Verification checklist (manual, on a real Windows machine)
 1. Launch → admin banner shows → "Restart as administrator" → UAC → banner
@@ -409,20 +432,42 @@ the chosen categories' `RemoveSelf` targets. Three regression tests pin it.
 
 ## 8. Success criteria / quality gate for "done"
 
-Current state (0.2.0) — all verified:
+Current state (0.3.0) — all verified:
 
 - [x] `dotnet test`: **46/46** green.
-- [x] `dotnet test -p:RunWindowsTests=true` on Windows: **47/47** green.
-- [x] `dotnet build CleanBoost.App -c Release -r win-x64` → 0 errors/0 warnings.
-- [x] Cleaner/Booster/History pages smoke-tested on a real Windows host via a
-      scripted UI driver (see §6a).
-- [x] `dist/CleanBoost-x64-0.2.0.msi` (67.6MB) builds; administrative install
-      extracts 506 files incl. `rules\winapp2.ini`. **Still needs a real
-      elevated install/launch/uninstall (P4).**
-- [x] `dist/CleanBoost-x64-0.2.0.msix` (83.3MB) signed `CN=JS BlueFlutex`,
-      unpacks to `Identity 0.2.0.0` + exe 0.2.0.0 (516 files), sideloadable.
-- [x] All 3 deliverables (portable zip 81.7MB, MSIX, MSI) in `dist/` and
-      uploaded to GitHub release `v0.2.0`.
+- [x] `dotnet test -c Release -p:RunWindowsTests=true` on Windows: **48/48** green.
+- [x] `dotnet build CleanBoost.App -c Release -r win-x64` → 0 errors / 0 warnings.
+- [x] Cleaner/Booster/History/Services pages smoke-tested on a real Windows host
+      via a scripted UI driver (see §6a).
+- [x] `dist/CleanBoost-x64-0.3.0.msi` (67.6 MB) builds. **Still needs a real
+      elevated install → launch → uninstall run (P4).**
+- [x] `dist/CleanBoost-x64-0.3.0.msix` (83.3 MB) signed `CN=JS BlueFlutex`,
+      `Identity Version="0.3.0.0"`, exe `0.3.0.0`, sideloadable.
+- [x] `dist/CleanBoost-x64-0.3.0-portable.zip` (81.7 MB).
+- [x] All 3 deliverables in `dist/` and uploaded to GitHub release `v0.3.0`.
 - [x] One command reproduces all three: `scripts/build-release.ps1`.
+- [x] `README.md`, `THIRD-PARTY-NOTICES.md`, `CHANGELOG.md`, `.editorconfig`,
+      issue templates and `docs/screenshots/` present and cross-linked.
+- [x] `.github/workflows/ci.yml` — restore, both test passes, Release app build,
+      and a guard that fails if `rules/winapp2.ini` is edited.
 - [ ] No signing key tracked in git (old `CleanBoostDev.pfx` still in history
       at `f2ed5c5` — password-protected, treat as burned).
+
+### Open, non-blocking
+
+- The MSIX is still assembled from `packaging/msix/layout` rather than csproj
+  `Asset Files`, and `build-release.ps1` rewrites `AppxManifest.xml` /
+  `product.wxs` versions without committing them — the tree is left dirty after a
+  release until you commit the bump by hand.
+- `build-release.ps1 -Upload` cannot create a *first* release; it only calls
+  `gh release upload`, which requires the release to already exist.
+- Explorer thumbnail/icon caches are unremovable while Explorer runs
+  (`SHFileOperation` returns `ERROR_INVALID_LEVEL`, 124). Those categories will
+  always report failures until Explorer restarts.
+- The audit journal is still written one line per deleted file. Correct and
+  line-ordered, but it dominates wall-time on very large cleanups; buffering the
+  writes is the obvious next win.
+- Observed once and **not reproducible in 4 further attempts**: the app process
+  exited cleanly (code 0) about 55 s into a ~42k-item scan. No event-log entry,
+  no stdout/stderr output, memory stable at ~177 MB. Worth watching, not
+  understood.

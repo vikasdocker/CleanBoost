@@ -1,0 +1,55 @@
+name: Feature request
+description: Suggest a new capability or a change to an existing one
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please check [ROADMAP.md](https://github.com/vikasdocker/CleanBoost/blob/main/ROADMAP.md)
+        first — it records locked design decisions and known limitations, so a
+        proposal may already have been considered and rejected.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the situation, not the solution. That makes it much easier to find an approach that works.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like CleanBoost to do?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area
+      options:
+        - Cleaner
+        - Booster
+        - History
+        - Services
+        - Packaging / distribution
+        - Developer experience
+        - Documentation
+    validations:
+      required: true
+
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety implications
+      description: |
+        Does this touch deletion, elevation, the registry, or anything irreversible?
+        CleanBoost's safety model is a hard constraint, so proposals that would
+        weaken it are unlikely to be accepted — but say so up front so we can
+        discuss it.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered

@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Cancel superseded runs on the same branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: windows-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Must match global.json, which pins the SDK to 8.0.425 with
+      # rollForward latestPatch.
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore src/CleanBoost.App/CleanBoost.App.csproj
+
+      - name: Test (net8.0, cross-platform)
+        run: dotnet test tests/CleanBoost.Tests/CleanBoost.Tests.csproj --nologo -v q
+
+      # Opt-in elevation/token checks. They only run against a real Windows host,
+      # so this job is the first place they are exercised in CI.
+      - name: Test (Windows-only elevation checks)
+        run: dotnet test tests/CleanBoost.Tests/CleanBoost.Tests.csproj -c Release -p:RunWindowsTests=true --nologo -v q
+
+      - name: Build app (Release, win-x64)
+        run: dotnet build src/CleanBoost.App/CleanBoost.App.csproj -c Release -r win-x64 --nologo -v q
+
+      - name: Warn on new warnings
+        run: |
+          dotnet build src/CleanBoost.App/CleanBoost.App.csproj -c Release -r win-x64 `
+            -p:TreatWarningsAsErrors=false -warnaserror /p:WarningLevel=9999 `
+            --nologo -v q 2>&1 | Tee-Object -Variable out
+          if ($out -match ': warning ') { Write-Error "build produced warnings"; exit 1 }
+        continue-on-error: true
+
+  rules:
+    name: winapp2.ini is unmodified
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # rules/winapp2.ini is CC-BY-SA-4.0 and must be redistributed unmodified.
+      # See THIRD-PARTY-NOTICES.md. This fails the build if anyone edits it.
+      - name: Verify bundled rules are untouched
+        run: |
+          git diff --exit-code HEAD -- rules/winapp2.ini || {
+            echo "::error::rules/winapp2.ini was modified. It is third-party CC-BY-SA-4.0"
+            echo "::error::material and must be redistributed unmodified."
+            exit 1
+          }

@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Safety model and locked decisions
+    url: https://github.com/vikasdocker/CleanBoost#safety-model
+    about: What CleanBoost will and will not do, and why.
+  - name: Known limitations
+    url: https://github.com/vikasdocker/CleanBoost#known-limitations
+    about: Honest list of what is still rough — check before filing a bug.
+  - name: ROADMAP
+    url: https://github.com/vikasdocker/CleanBoost/blob/main/ROADMAP.md
+    about: Locked decisions, working build commands, and Windows/XAML environment traps.
+  - name: Audit journal location
+    url: https://github.com/vikasdocker/CleanBoost#safety-model
+    about: Where the per-deletion audit log lives, and how to read it.

@@ -1,0 +1,104 @@
+name: Bug report
+description: Something in CleanBoost behaves wrongly, deletes the wrong thing, or crashes
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please read the safety notes below before filing —
+        they tell us which category of bug this is.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you do, and what did CleanBoost do instead?
+      placeholder: I clicked "Clean selected" on User temporary files and…
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area
+      options:
+        - Cleaner — scanning
+        - Cleaner — cleanup / progress
+        - Booster
+        - History
+        - Services
+        - Install / launch
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: CleanBoost version
+      description: Shown in the About dialog and the footer bar.
+      placeholder: 0.3.0
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version and build
+      placeholder: Windows 11 23H2 (22631)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: elevated
+    attributes:
+      label: Were you running as administrator?
+      options: ["Yes", "No", "Not sure"]
+    validations:
+      required: true
+
+  - type: textarea
+    id: categories
+    attributes:
+      label: Categories involved
+      description: If a category name appears in the activity list, list it. Especially useful for deletion bugs.
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: audit
+    attributes:
+      label: Relevant lines from the audit journal
+      description: |
+        %LocalAppData%\CleanBoost\audit.log holds one JSON line per deletion attempt
+        with the outcome and reason. Paste any lines that look wrong. This is the
+        single most useful thing you can attach.
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked the History tab for related entries.
+          required: false
+        - label: I confirmed nothing important was permanently deleted (cleaner removals go to the Recycle Bin).
+          required: false
+        - label: I searched existing issues for this.
+          required: true

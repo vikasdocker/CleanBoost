@@ -1,0 +1,45 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{csproj,props,targets,wxs,xml,xaml,config,yml,yaml}]
+indent_size = 2
+
+[*.{md,markdown}]
+indent_size = 2
+# Two trailing spaces are a hard line break in Markdown.
+trim_trailing_whitespace = false
+
+[*.{ini,ps1}]
+indent_size = 4
+
+[*.cs]
+indent_size = 4
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_prefer_braces = true:suggestion
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_style_expression_bodied_properties = true:suggestion
+csharp_style_namespace_declarations = file_scoped:suggestion
+dotnet_sort_system_directives_first = true
+dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggestion
+dotnet_style_readonly_field = true:suggestion
+dotnet_style_prefer_conditional_expression_over_return = false:suggestion
+
+# `async void` is only valid for event handlers. Every other async path must return
+# a Task, or exceptions become unobserved and crash the app.
+dotnet_diagnostic.CS1998.severity = warning
+
+[*.xaml]
+# A missing {ThemeResource} key is a fatal startup crash (0x802B000A). Only use keys
+# already proven against the pinned Windows App SDK — see CRASHFIX.md.
